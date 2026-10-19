@@ -1,850 +1,452 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Игорь — коуч и консультант. Ясность вместо готовых ответов</title>
-<meta name="description" content="Коучинг и консультирование для личных и профессиональных переходов. Игорь — сертифицированный коуч, MBA, опыт в IT-менеджменте.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Точка перехода — коучинг для руководителей и тех, кто на перепутье</title>
+<meta name="description" content="Индивидуальный онлайн-коучинг: ясность в карьерных и жизненных переходах, поддержка руководителей. Ясность вместо готовых ответов.">
+<meta name="theme-color" content="#1E1E1E">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Точка перехода — коучинг для руководителей и тех, кто на перепутье">
+<meta property="og:description" content="Индивидуальный онлайн-коучинг: ясность в карьерных и жизненных переходах, поддержка руководителей. Ясность вместо готовых ответов.">
+<meta property="og:site_name" content="Точка перехода">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Точка перехода — коучинг для руководителей и тех, кто на перепутье">
+<meta name="twitter:description" content="Индивидуальный онлайн-коучинг: ясность в карьерных и жизненных переходах, поддержка руководителей.">
+<!-- og-image.png (1200×630) уже лежит в репозитории. Соцсети принимают только абсолютный адрес картинки.
+     [ЗАПОЛНИТЬ: после публикации раскомментируйте и подставьте адрес сайта]
+<meta property="og:image" content="https://АДРЕС-САЙТА/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Точка перехода. Ясность вместо готовых ответов">
+<meta name="twitter:image" content="https://АДРЕС-САЙТА/og-image.png">
+-->
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-
-  :root{
-    --bg-primary:#1E1E1E;
-    --bg-secondary:#2B2826;
-    --accent:#C17F3E;
-    --accent-dim:#9c6832;
-    --text-primary:#F5F0E8;
-    --text-secondary:#C9B99A;
-    --line:rgba(245,240,232,0.12);
-    --line-strong:rgba(245,240,232,0.22);
-    --serif:'Cormorant Garamond', Georgia, serif;
-    --sans:'Inter', -apple-system, sans-serif;
-    --max:920px;
-  }
-
-  *{margin:0;padding:0;box-sizing:border-box;}
-
-  html{scroll-behavior:smooth;}
-  @media (prefers-reduced-motion: reduce){
-    html{scroll-behavior:auto;}
-    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
-  }
-
-  body{
-    background:var(--bg-primary);
-    color:var(--text-primary);
-    font-family:var(--sans);
-    font-size:16px;
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-  }
-
-  a{color:inherit;}
-  ::selection{background:var(--accent); color:var(--bg-primary);}
-
-  a:focus-visible, button:focus-visible{
-    outline:2px solid var(--accent);
-    outline-offset:3px;
-  }
-
-  .wrap{
-    max-width:var(--max);
-    margin:0 auto;
-    padding:0 28px;
-  }
-
-  /* ---------- Spine: the transition point traveling down the page ---------- */
-  .spine{
-    position:fixed;
-    left:calc(50% - var(--max)/2 - 34px);
-    top:0;
-    bottom:0;
-    width:1px;
-    background:var(--line);
-    z-index:5;
-    display:block;
-  }
-  .spine-dot{
-    position:absolute;
-    left:50%;
-    top:0;
-    width:9px;
-    height:9px;
-    margin-left:-4.5px;
-    border-radius:50%;
-    background:var(--accent);
-    box-shadow:0 0 0 5px rgba(193,127,62,0.15);
-    transition:top 0.08s linear;
-  }
-  @media (max-width: 980px){
-    .spine{ left:16px; }
-  }
-  @media (max-width: 620px){
-    .spine{ display:none; }
-  }
-
-  /* ---------- Eyebrow / labels ---------- */
-  .eyebrow{
-    font-family:var(--sans);
-    font-size:12px;
-    font-weight:600;
-    letter-spacing:0.18em;
-    text-transform:uppercase;
-    color:var(--accent);
-    margin-bottom:18px;
-    display:block;
-  }
-
-  h1, h2, h3{
-    font-family:var(--serif);
-    font-weight:500;
-    color:var(--text-primary);
-    line-height:1.15;
-  }
-
-  section{
-    padding:110px 0;
-    border-bottom:1px solid var(--line);
-    position:relative;
-  }
-  section:last-of-type{ border-bottom:none; }
-
-  /* ---------- Header ---------- */
-  header{
-    position:fixed;
-    top:0; left:0; right:0;
-    z-index:20;
-    padding:22px 28px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    background:linear-gradient(to bottom, rgba(30,30,30,0.92), rgba(30,30,30,0));
-    pointer-events:none;
-  }
-  header .mono{
-    pointer-events:auto;
-    font-family:var(--serif);
-    font-size:26px;
-    color:var(--accent);
-    border:1px solid var(--line-strong);
-    width:42px; height:42px;
-    display:flex; align-items:center; justify-content:center;
-    border-radius:50%;
-  }
-  header .cta-mini{
-    pointer-events:auto;
-    font-family:var(--sans);
-    font-size:13px;
-    font-weight:600;
-    letter-spacing:0.03em;
-    color:var(--text-primary);
-    border:1px solid var(--line-strong);
-    padding:10px 20px;
-    border-radius:100px;
-    text-decoration:none;
-    transition:border-color 0.2s, background 0.2s;
-  }
-  header .cta-mini:hover{ background:var(--accent); border-color:var(--accent); color:var(--bg-primary); }
-
-  /* ---------- Hero ---------- */
-  .hero{
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    border-bottom:1px solid var(--line);
-    padding-top:140px;
-  }
-  .hero .eyebrow{ margin-bottom:26px; }
-  .hero h1{
-    font-size:clamp(36px, 6vw, 64px);
-    max-width:780px;
-    margin-bottom:28px;
-    font-style:italic;
-  }
-  .hero p.lead{
-    font-size:19px;
-    color:var(--text-secondary);
-    max-width:520px;
-    margin-bottom:44px;
-  }
-  .hero-actions{
-    display:flex;
-    align-items:center;
-    gap:24px;
-    flex-wrap:wrap;
-  }
-  .btn{
-    display:inline-block;
-    background:var(--accent);
-    color:var(--bg-primary);
-    font-family:var(--sans);
-    font-weight:600;
-    font-size:15px;
-    padding:16px 32px;
-    border-radius:100px;
-    text-decoration:none;
-    border:1px solid var(--accent);
-    transition:transform 0.15s, background 0.15s;
-  }
-  .btn:hover{ background:var(--accent-dim); border-color:var(--accent-dim); transform:translateY(-1px); }
-  .btn-ghost{
-    background:transparent;
-    color:var(--text-primary);
-    border:1px solid var(--line-strong);
-  }
-  .btn-ghost:hover{ border-color:var(--accent); background:transparent; color:var(--accent); }
-  .fineprint{
-    font-size:13px;
-    color:var(--text-secondary);
-    opacity:0.8;
-  }
-
-  /* ---------- Formula section ---------- */
-  .formula-grid{
-    display:grid;
-    grid-template-columns:repeat(4, 1fr);
-    gap:36px;
-    margin-top:56px;
-  }
-  .formula-item{ position:relative; padding-left:0; }
-  .formula-num{
-    font-family:var(--serif);
-    font-style:italic;
-    font-size:15px;
-    color:var(--accent);
-    display:block;
-    margin-bottom:14px;
-  }
-  .formula-item h3{
-    font-size:26px;
-    margin-bottom:12px;
-  }
-  .formula-item p{
-    color:var(--text-secondary);
-    font-size:15px;
-  }
-  @media (max-width: 820px){
-    .formula-grid{ grid-template-columns:1fr 1fr; }
-  }
-  @media (max-width: 560px){
-    .formula-grid{ grid-template-columns:1fr; gap:40px; }
-  }
-
-  h2{
-    font-size:clamp(28px, 4vw, 42px);
-    max-width:640px;
-    margin-bottom:20px;
-  }
-  .section-lead{
-    color:var(--text-secondary);
-    font-size:16px;
-    max-width:560px;
-    margin-bottom:20px;
-  }
-
-  /* ---------- Tracks ---------- */
-  .tracks{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:1px;
-    background:var(--line);
-    margin-top:56px;
-    border:1px solid var(--line);
-  }
-  .track-card{
-    background:var(--bg-primary);
-    padding:44px 36px;
-  }
-  .track-card .tag{
-    font-size:12px;
-    letter-spacing:0.14em;
-    text-transform:uppercase;
-    color:var(--accent);
-    font-weight:600;
-    margin-bottom:16px;
-    display:block;
-  }
-  .track-card h3{
-    font-size:28px;
-    margin-bottom:16px;
-  }
-  .track-card p{
-    color:var(--text-secondary);
-    font-size:15.5px;
-  }
-  @media (max-width: 700px){
-    .tracks{ grid-template-columns:1fr; }
-  }
-
-  /* ---------- Products ---------- */
-  .products{
-    margin-top:56px;
-    display:flex;
-    flex-direction:column;
-  }
-  .product-row{
-    display:grid;
-    grid-template-columns:2fr auto 1fr;
-    gap:24px;
-    align-items:baseline;
-    padding:28px 0;
-    border-top:1px solid var(--line);
-  }
-  .product-row:last-child{ border-bottom:1px solid var(--line); }
-  .product-name{
-    font-family:var(--serif);
-    font-size:23px;
-    font-style:italic;
-  }
-  .product-desc{
-    grid-column:1;
-    color:var(--text-secondary);
-    font-size:14px;
-    margin-top:6px;
-  }
-  .product-meta{
-    color:var(--text-secondary);
-    font-size:13.5px;
-    letter-spacing:0.02em;
-    white-space:nowrap;
-  }
-  .product-price{
-    font-family:var(--sans);
-    font-weight:600;
-    font-size:17px;
-    text-align:right;
-    color:var(--text-primary);
-    white-space:nowrap;
-  }
-  .product-price .soon{
-    display:block;
-    font-size:11px;
-    font-weight:600;
-    color:var(--accent);
-    letter-spacing:0.08em;
-    text-transform:uppercase;
-    margin-top:4px;
-  }
-  @media (max-width: 620px){
-    .product-row{ grid-template-columns:1fr; gap:6px; }
-    .product-price{ text-align:left; }
-  }
-  .leadership-note{
-    margin-top:36px;
-    padding:26px 30px;
-    border:1px dashed var(--line-strong);
-    border-radius:4px;
-    color:var(--text-secondary);
-    font-size:15px;
-  }
-  .leadership-note strong{ color:var(--text-primary); font-weight:600; }
-
-  /* ---------- About ---------- */
-  .about-grid{
-    display:grid;
-    grid-template-columns:220px 1fr;
-    gap:56px;
-    margin-top:56px;
-    align-items:start;
-  }
-  .portrait-placeholder{
-    aspect-ratio:3/4;
-    border:1px dashed var(--line-strong);
-    border-radius:4px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    font-size:12px;
-    color:var(--text-secondary);
-    letter-spacing:0.05em;
-    text-transform:uppercase;
-    background:
-      repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(245,240,232,0.03) 10px, rgba(245,240,232,0.03) 20px);
-    padding:20px;
-  }
-  .about-text p{ margin-bottom:16px; color:var(--text-secondary); font-size:16px; max-width:520px; }
-  .about-text p strong{ color:var(--text-primary); font-weight:600; }
-  .langs{
-    margin-top:24px;
-    display:flex;
-    gap:14px;
-    font-size:13px;
-    color:var(--text-secondary);
-    letter-spacing:0.05em;
-  }
-  .langs span{
-    border:1px solid var(--line-strong);
-    padding:6px 14px;
-    border-radius:100px;
-  }
-  @media (max-width: 700px){
-    .about-grid{ grid-template-columns:1fr; }
-    .portrait-placeholder{ max-width:220px; }
-  }
-
-  /* ---------- FAQ ---------- */
-  .faq{ margin-top:56px; }
-  .faq-item{
-    border-top:1px solid var(--line);
-    padding:26px 0;
-  }
-  .faq-item:last-child{ border-bottom:1px solid var(--line); }
-  .faq-item h3{
-    font-size:19px;
-    font-family:var(--sans);
-    font-weight:600;
-    margin-bottom:10px;
-  }
-  .faq-item p{ color:var(--text-secondary); font-size:15px; max-width:640px; }
-
-  /* ---------- Final CTA ---------- */
-  .final-cta{
-    text-align:center;
-    padding:130px 0;
-  }
-  .final-cta h2{ margin:0 auto 20px auto; }
-  .final-cta p{ color:var(--text-secondary); max-width:460px; margin:0 auto 40px auto; }
-  .final-cta .hero-actions{ justify-content:center; }
-
-  /* ---------- Footer ---------- */
-  footer{
-    padding:50px 0 60px 0;
-    color:var(--text-secondary);
-    font-size:13px;
-  }
-  .footer-top{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    flex-wrap:wrap;
-    gap:24px;
-    margin-bottom:30px;
-  }
-  .footer-brand{
-    font-family:var(--serif);
-    font-style:italic;
-    font-size:20px;
-    color:var(--text-primary);
-  }
-  .footer-links{
-    display:flex;
-    gap:20px;
-  }
-  .footer-links a{ text-decoration:none; color:var(--text-secondary); transition:color 0.15s; }
-  .footer-links a:hover{ color:var(--accent); }
-  .footer-legal{
-    border-top:1px solid var(--line);
-    padding-top:24px;
-    opacity:0.7;
-  }
-
-  .fade-in{
-    opacity:0;
-    transform:translateY(16px);
-    transition:opacity 0.7s ease, transform 0.7s ease;
-  }
-  .fade-in.visible{ opacity:1; transform:none; }
-  @media (prefers-reduced-motion: reduce){
-    .fade-in{ opacity:1; transform:none; transition:none; }
-  }
-
-  /* ---------- CTA banner ---------- */
-  .cta-banner{
-    padding:64px 0;
-    text-align:center;
-    background:var(--bg-secondary);
-    border-bottom:1px solid var(--line);
-  }
-  .cta-banner p{
-    font-family:var(--serif);
-    font-style:italic;
-    font-size:clamp(20px, 3vw, 27px);
-    color:var(--text-primary);
-    max-width:580px;
-    margin:0 auto 28px auto;
-  }
-
-  /* ---------- Stats / credentials ---------- */
-  .stats-row{
-    display:grid;
-    grid-template-columns:repeat(4, 1fr);
-    gap:24px;
-    margin-top:56px;
-  }
-  .stat-item{ text-align:center; padding:0 10px; }
-  .stat-item .stat-value{
-    font-family:var(--serif);
-    font-style:italic;
-    font-size:23px;
-    color:var(--accent);
-    display:block;
-    margin-bottom:8px;
-  }
-  .stat-item .stat-label{
-    font-family:var(--sans);
-    font-size:12.5px;
-    color:var(--text-secondary);
-    letter-spacing:0.02em;
-  }
-  @media (max-width: 700px){
-    .stats-row{ grid-template-columns:1fr 1fr; gap:32px 16px; }
-  }
-
-  /* ---------- Pain checklist ---------- */
-  .pain-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:1px;
-    background:var(--line);
-    border:1px solid var(--line);
-    margin-top:56px;
-  }
-  .pain-item{
-    background:var(--bg-primary);
-    padding:26px 30px 26px 44px;
-    font-size:15.5px;
-    color:var(--text-secondary);
-    position:relative;
-  }
-  .pain-item::before{
-    content:"—";
-    position:absolute;
-    left:20px;
-    color:var(--accent);
-  }
-  @media (max-width: 700px){
-    .pain-grid{ grid-template-columns:1fr; }
-  }
-
-  /* ---------- Results (после встречи) ---------- */
-  .results-grid{
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:40px;
-    margin-top:56px;
-  }
-  .result-item .result-num{
-    font-family:var(--serif);
-    font-style:italic;
-    font-size:15px;
-    color:var(--accent);
-    display:block;
-    margin-bottom:14px;
-  }
-  .result-item p{ color:var(--text-secondary); font-size:15.5px; }
-  @media (max-width: 820px){
-    .results-grid{ grid-template-columns:1fr; gap:32px; }
-  }
-
-  /* ---------- Testimonials placeholder ---------- */
-  .testimonial-grid{
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:20px;
-    margin-top:56px;
-  }
-  .testimonial-placeholder{
-    aspect-ratio:3/4;
-    border:1px dashed var(--line-strong);
-    border-radius:4px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:20px;
-    font-size:12px;
-    color:var(--text-secondary);
-    letter-spacing:0.03em;
-    background:repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(245,240,232,0.03) 10px, rgba(245,240,232,0.03) 20px);
-  }
-  @media (max-width: 820px){
-    .testimonial-grid{ grid-template-columns:1fr 1fr; }
-  }
-  @media (max-width: 560px){
-    .testimonial-grid{ grid-template-columns:1fr; }
-  }
-
-</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500&display=swap">
+<link rel="stylesheet" href="style.css">
+<!-- Место для аналитики: подключить позже. Если аналитика ставит необязательные cookie,
+     сначала добавить минималистичный cookie-баннер с отказом по умолчанию. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Точка перехода",
+  "slogan": "Ясность вместо готовых ответов",
+  "description": "Индивидуальный онлайн-коучинг: ясность в карьерных и жизненных переходах, поддержка руководителей.",
+  "areaServed": "Online",
+  "priceRange": "€100–€680",
+  "founder": { "@type": "Person", "name": "Игорь", "jobTitle": "Коуч (ICF)" },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Форматы коучинга",
+    "itemListElement": [
+      { "@type": "Offer", "name": "Ознакомительная встреча, 15 минут", "price": "0", "priceCurrency": "RUB" },
+      { "@type": "Offer", "name": "Разовая сессия, 60 минут", "price": "9000", "priceCurrency": "RUB" },
+      { "@type": "Offer", "name": "Малый пакет, 4 сессии", "price": "32000", "priceCurrency": "RUB" },
+      { "@type": "Offer", "name": "Расширенный пакет, 8 сессий", "price": "61000", "priceCurrency": "RUB" }
+    ]
+  }
+}
+</script>
+<!-- Разметка FAQ: только вопросы с полностью заполненными ответами.
+     После заполнения платформы и способов оплаты добавьте эти два вопроса сюда же. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Чем коучинг отличается от психотерапии?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Коучинг работает с целями, решениями и планом действий. Психотерапия занимается лечением и психологическими состояниями. Консультационные и коучинговые услуги не являются психотерапией, психиатрической помощью или медицинской консультацией и не заменяют их." } },
+    { "@type": "Question", "name": "Как проходит первая встреча?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Первая встреча ознакомительная и бесплатная, она длится 15 минут и проходит онлайн. Вместе решаем, подходит ли вам этот формат. Встреча ни к чему не обязывает." } },
+    { "@type": "Question", "name": "Сколько сессий нужно?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Это зависит от запроса. С одним конкретным вопросом бывает достаточно разовой сессии. Переходы, которые требуют нескольких шагов, удобнее разбирать в пакете из 4 или 8 сессий." } },
+    { "@type": "Question", "name": "Что, если я не смогу прийти на сессию?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Сессию можно перенести бесплатно, если предупредить не позднее чем за 24 часа. Остальные случаи описаны в публичной оферте." } },
+    { "@type": "Question", "name": "Конфиденциально ли то, что я рассказываю?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Да. Как коуч ICF я следую Этическому кодексу ICF, который требует сохранять конфиденциальность клиента." } },
+    { "@type": "Question", "name": "Дадите ли вы гарантии результата?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Нет. Результат зависит не только от сессий, но и от ваших действий между ними." } }
+  ]
+}
+</script>
 </head>
 <body>
+<a class="skip" href="#main">Перейти к содержанию</a>
 
-<div class="spine" id="spine"><div class="spine-dot" id="spineDot"></div></div>
-
-<header>
-  <div class="mono">И</div>
-  <a class="cta-mini" href="#contact">Написать в Telegram</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="#top" aria-label="Точка перехода, в начало страницы">
+      <span class="mono" aria-hidden="true">И</span>
+      <span class="brand-name">Точка перехода</span>
+    </a>
+    <nav aria-label="Разделы страницы">
+      <ul class="nav-links">
+        <li><a href="#tracks">Треки</a></li>
+        <li><a href="#approach">Подход</a></li>
+        <li><a href="#formats">Форматы</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-sm js-tg" href="#final">Telegram</a>
+  </div>
 </header>
 
-<main>
+<main id="main">
 
-  <section class="hero wrap">
-    <span class="eyebrow">Игорь · Коуч и консультант</span>
-    <h1>Ясность вместо готовых ответов</h1>
-    <p class="lead">Коучинг и консультирование для тех, кто оказался на пороге перемен — в жизни или в работе. Разбираемся в настоящем, чтобы увидеть следующий шаг.</p>
-    <div class="hero-actions">
-      <a class="btn" href="#contact">Написать в Telegram</a>
-      <span class="fineprint">Первый разговор — 30 минут</span>
+  <!-- 1. Hero -->
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div class="hero-text">
+        <span class="mono mono-lg" aria-hidden="true">И</span>
+        <h1>Точка перехода</h1>
+        <p class="hero-tag">Коучинг для руководителей и тех, кто на перепутье</p>
+        <p class="tagline">Ясность вместо готовых ответов</p>
+        <p class="hero-note">Вы не обязаны принимать решение сегодня. Достаточно увидеть, из чего оно состоит.</p>
+        <ul class="gains" aria-label="С чем вы уходите с сессии">
+          <li><b>Ясная картина</b> ситуации: где факты, а где опасения</li>
+          <li><b>Реальные варианты</b> и критерии, по которым между ними выбирать</li>
+          <li><b>Конкретный следующий шаг</b> вместо общего «надо что-то менять»</li>
+        </ul>
+        <div class="actions">
+          <a class="btn js-tg" href="#final">Написать в Telegram</a>
+          <span class="muted small">Индивидуально, онлайн</span>
+        </div>
+      </div>
+      <svg class="fork" viewBox="0 0 320 240" role="img" aria-label="Линия, которая в одной точке расходится на два пути">
+        <path d="M0 120 H150" stroke="currentColor" stroke-width="1.5" fill="none"/>
+        <path d="M150 120 C200 120 220 52 320 44" stroke="currentColor" stroke-width="1.5" fill="none" opacity=".55"/>
+        <path d="M150 120 C200 120 220 188 320 196" stroke="currentColor" stroke-width="1.5" fill="none" opacity=".55"/>
+        <path d="M150 120 H320" stroke="currentColor" stroke-width="1.5" fill="none" stroke-dasharray="3 6" opacity=".35"/>
+        <circle cx="150" cy="120" r="7" fill="#C17F3E"/>
+        <circle cx="150" cy="120" r="18" fill="none" stroke="#C17F3E" stroke-width="1"/>
+      </svg>
     </div>
   </section>
 
-  <section class="wrap fade-in">
-    <span class="eyebrow">Два направления</span>
-    <h2>С какими запросами приходят</h2>
-    <p class="section-lead">Два частых направления — но разговор всегда начинается с вашей конкретной ситуации.</p>
-    <div class="tracks">
-      <div class="track-card">
-        <span class="tag">Личное</span>
-        <h3>Жизненный переход</h3>
-        <p>Карьера, отношения или ощущение, что прежний путь исчерпал себя. Работаем с тем, что делать дальше — без готовых рецептов.</p>
-      </div>
-      <div class="track-card">
-        <span class="tag">Лидерство</span>
-        <h3>Рост в новую роль</h3>
-        <p>Коммуникация с командой, делегирование, ответственность нового уровня. Опыт управления в IT — на стороне вашей задачи.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="cta-banner">
+  <!-- 2. Треки -->
+  <section class="section" id="tracks" aria-labelledby="tracks-h">
     <div class="wrap">
-      <p>Не знаете, с чего начать? Напишите — разберёмся вместе.</p>
-      <a class="btn" href="#contact">Написать в Telegram</a>
-    </div>
-  </section>
-
-  <section class="wrap fade-in">
-    <span class="eyebrow">Коротко о мне</span>
-    <h2>Прежде чем расскажу больше</h2>
-    <div class="stats-row">
-      <div class="stat-item"><span class="stat-value">MBA</span><span class="stat-label">управленческое образование</span></div>
-      <div class="stat-item"><span class="stat-value">Коуч</span><span class="stat-label">сертифицирован</span></div>
-      <div class="stat-item"><span class="stat-value">IT</span><span class="stat-label">опыт управления командой</span></div>
-      <div class="stat-item"><span class="stat-value">3 языка</span><span class="stat-label">RU · EN · DE</span></div>
-    </div>
-  </section>
-
-  <section class="wrap fade-in">
-    <span class="eyebrow">Как я работаю</span>
-    <h2>Одна формула для каждой встречи</h2>
-    <p class="section-lead">Порядок не меняется — вне зависимости от того, что привело вас на встречу.</p>
-    <div class="formula-grid">
-      <div class="formula-item">
-        <span class="formula-num">Шаг I</span>
-        <h3>Слушать</h3>
-        <p>Начинаем с вопроса без готового ответа. Я не тороплю и не оцениваю ваше решение.</p>
+      <div class="head">
+        <p class="eyebrow">Два трека</p>
+        <h2 id="tracks-h">С какими запросами ко мне приходят</h2>
+        <p class="lead">Трек выбирается по типу запроса. Формат работы и цены одинаковы.</p>
       </div>
-      <div class="formula-item">
-        <span class="formula-num">Шаг II</span>
-        <h3>Разбор</h3>
-        <p>Раскладываю ситуацию по частям: что происходит на самом деле, а что только кажется.</p>
-      </div>
-      <div class="formula-item">
-        <span class="formula-num">Шаг III</span>
-        <h3>Опора</h3>
-        <p>Место, где нормально быть неуверенным. Многие проходят через похожее.</p>
-      </div>
-      <div class="formula-item">
-        <span class="formula-num">Шаг IV</span>
-        <h3>Шаг</h3>
-        <p>Встреча заканчивается не выводом на бумаге, а тремя конкретными действиями.</p>
+      <div class="tracks">
+        <article class="track">
+          <p class="track-label">Личный трек</p>
+          <h3>Жизненные и карьерные переходы</h3>
+          <p class="muted">Когда ни один из вариантов не очевиден и нужно понять, куда двигаться дальше.</p>
+          <ul class="dash">
+            <li>Уходить или оставаться на текущей работе</li>
+            <li>Смена профессии или начало с нуля</li>
+            <li>Поиск смысла и направления в работе</li>
+            <li>Ситуации на перепутье, когда сложно выбрать</li>
+          </ul>
+          <p class="gain"><span>Что вы получаете</span>Понимание, чего вы на самом деле хотите от работы, список реальных вариантов и первый шаг, который можно сделать без резких движений.</p>
+        </article>
+        <article class="track">
+          <p class="track-label">Руководительский трек</p>
+          <h3>Коучинг для руководителей и менеджеров</h3>
+          <p class="muted">Когда управленческая роль требует навыков, которым нигде не учили.</p>
+          <ul class="dash">
+            <li>Обратная связь и сложные разговоры</li>
+            <li>Делегирование без потери контроля</li>
+            <li>Переход из специалиста в руководителя</li>
+            <li>Повышение есть, а роста больше нет</li>
+          </ul>
+          <p class="gain"><span>Что вы получаете</span>Продуманный план сложного разговора или делегирования, который можно применить уже на следующей неделе, и понимание своей управленческой роли.</p>
+        </article>
       </div>
     </div>
   </section>
 
-  <section class="wrap fade-in">
-    <span class="eyebrow">Возможно, вам знакомо</span>
-    <h2>Если сейчас происходит что-то из этого</h2>
-    <p class="section-lead">Не нужно, чтобы совпало всё — достаточно одного пункта.</p>
-    <div class="pain-grid">
-      <div class="pain-item">Прежний путь как будто исчерпал себя, а нового пока не видно</div>
-      <div class="pain-item">Решение откладывается, потому что кажется небезопасным</div>
-      <div class="pain-item">Команду приходится убеждать заново каждый раз</div>
-      <div class="pain-item">Кажется, что все вокруг уже разобрались, а вы — нет</div>
-      <div class="pain-item">Не готовы к марафону или курсу — нужен разговор один на один</div>
-      <div class="pain-item">Ищете не мотивацию, а ясность</div>
-    </div>
-  </section>
-
-  <section class="wrap fade-in">
-    <span class="eyebrow">Форматы работы</span>
-    <h2>От первого разговора до полного сопровождения</h2>
-    <p class="section-lead">Личный трек — с фиксированной ценой. Работа с руководителями и командами обсуждается под задачу.</p>
-
-    <div class="products">
-      <div class="product-row">
+  <!-- 3. CTA-баннер -->
+  <section class="section section-tight" aria-labelledby="intro-h">
+    <div class="wrap">
+      <div class="banner">
         <div>
-          <div class="product-name">Экспресс-сессия</div>
-          <div class="product-desc">Один конкретный вопрос, ясность к концу встречи.</div>
+          <p class="eyebrow">Бесплатно · 15 минут</p>
+          <h2 id="intro-h" class="h-banner">Ознакомительная встреча</h2>
+          <p class="muted">За 15 минут вы проговорите свой запрос вслух, часто это уже проясняет многое, и поймёте, подходит ли вам такой формат работы. Ни к чему не обязывает.</p>
         </div>
-        <div class="product-meta">30 минут</div>
-        <div class="product-price">2 000–3 000 ₽</div>
-      </div>
-      <div class="product-row">
-        <div>
-          <div class="product-name">Ситуация + план</div>
-          <div class="product-desc">Основной формат: разбор, опора, три конкретных шага.</div>
-        </div>
-        <div class="product-meta">60–75 минут</div>
-        <div class="product-price">6 000–8 000 ₽</div>
-      </div>
-      <div class="product-row">
-        <div>
-          <div class="product-name">Сопровождение</div>
-          <div class="product-desc">Для тех, кому нужна не разовая встреча, а движение.</div>
-        </div>
-        <div class="product-meta">3 встречи · 4–6 недель</div>
-        <div class="product-price">15 000–18 000 ₽</div>
-      </div>
-      <div class="product-row">
-        <div>
-          <div class="product-name">Переход</div>
-          <div class="product-desc">Полное сопровождение через серьёзный жизненный переход.</div>
-        </div>
-        <div class="product-meta">6 встреч · 2 месяца</div>
-        <div class="product-price">35 000–45 000 ₽<span class="soon">Скоро</span></div>
-      </div>
-    </div>
-
-    <div class="leadership-note">
-      <strong>Лидерский трек —</strong> формат и стоимость обсуждаются под задачу: разовая сессия, серия встреч или работа с командой. Напишите, с чем пришли — предложу вариант.
-    </div>
-  </section>
-
-  <section class="wrap fade-in">
-    <span class="eyebrow">После встречи</span>
-    <h2>Что вы уносите с собой</h2>
-    <div class="results-grid">
-      <div class="result-item">
-        <span class="result-num">01</span>
-        <p>Понимание, что происходит на самом деле — без розовых очков и без катастрофизации.</p>
-      </div>
-      <div class="result-item">
-        <span class="result-num">02</span>
-        <p>Три конкретных шага, с которых можно начать уже на этой неделе.</p>
-      </div>
-      <div class="result-item">
-        <span class="result-num">03</span>
-        <p>Ощущение опоры: рядом есть с кем сверить решение.</p>
+        <a class="btn js-tg" href="#final">Записаться в Telegram</a>
       </div>
     </div>
   </section>
 
-  <section class="wrap fade-in">
-    <span class="eyebrow">Отзывы</span>
-    <h2>Скоро здесь появятся истории клиентов</h2>
-    <p class="section-lead">Как в переписках — без купюр, и только с согласия на публикацию.</p>
-    <div class="testimonial-grid">
-      <div class="testimonial-placeholder">Отзыв<br>появится после первых сессий</div>
-      <div class="testimonial-placeholder">Отзыв<br>появится после первых сессий</div>
-      <div class="testimonial-placeholder">Отзыв<br>появится после первых сессий</div>
+  <!-- 4. Регалии -->
+  <section class="light creds-band" aria-labelledby="creds-h">
+    <div class="wrap">
+      <p class="eyebrow creds-h" id="creds-h">Что за этим стоит для вас</p>
+      <ul class="creds">
+        <li><b>ICF</b><span>Работа по международному этическому кодексу, конфиденциальность</span></li>
+        <li><b>Scrum Master</b><span>Большое изменение разбивается на короткие проверяемые шаги</span></li>
+        <li><b>MBA, IT Management</b><span>Разговор о карьере с учётом того, как устроены компании</span></li>
+        <li><b>10 лет управления</b><span>Рабочие ситуации не нужно долго объяснять</span></li>
+      </ul>
     </div>
   </section>
 
-  <section class="wrap fade-in">
-    <span class="eyebrow">Немного о мне</span>
-    <h2>Обо мне</h2>
-    <div class="about-grid">
-      <div class="portrait-placeholder">Фото<br>портрет</div>
+  <!-- 5. Мой подход -->
+  <section class="section" id="approach" aria-labelledby="approach-h">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Мой подход</p>
+        <h2 id="approach-h">Диагностика ситуации и путей вперёд</h2>
+        <p class="lead">Я не даю готовых рецептов и не говорю, как жить. Моя задача в том, чтобы вы увидели ситуацию ясно. Решение остаётся за вами.</p>
+      </div>
+      <ol class="steps">
+        <li>
+          <span class="step-n">01</span>
+          <h3>Выслушать запрос</h3>
+          <p>Понять, с чем вы пришли, и отделить сам запрос от шума вокруг него.</p>
+          <p class="step-gain">У вас: точная формулировка того, что на самом деле беспокоит</p>
+        </li>
+        <li>
+          <span class="step-n">02</span>
+          <h3>Разбор ситуации</h3>
+          <p>Структурно разобрать, что известно, что является предположением, где реальные развилки и что мешает.</p>
+          <p class="step-gain">У вас: карта ситуации вместо круга одних и тех же мыслей</p>
+        </li>
+        <li>
+          <span class="step-n">03</span>
+          <h3>Поддержка и опора</h3>
+          <p>Найти, на что можно опереться: ресурсы, ценности, прошлый опыт и ограничения, которые стоит принять всерьёз.</p>
+          <p class="step-gain">У вас: понимание, на что вы можете рассчитывать</p>
+        </li>
+        <li>
+          <span class="step-n">04</span>
+          <h3>План из конкретных шагов</h3>
+          <p>Завершить сессию ближайшими действиями, а не общими намерениями.</p>
+          <p class="step-gain">У вас: конкретные шаги, которые можно начать делать сразу</p>
+        </li>
+      </ol>
+      <div class="background-note">
+        <p class="path" aria-label="Путь: IT, управление командами, MBA, коучинг">IT <span>→</span> управление командами <span>→</span> MBA <span>→</span> коучинг</p>
+        <p>Почему это важно для вас: я сам руководил командами и знаю рабочие ситуации изнутри, поэтому разбор идёт по существу. А коучинг даёт инструмент, чтобы решение нашли именно вы и оно подходило вашей жизни, а не чужому шаблону.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Чек-лист -->
+  <section class="section light" aria-labelledby="pains-h">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Если вы узнаёте себя</p>
+        <h2 id="pains-h">С этими мыслями приходят чаще всего</h2>
+      </div>
+      <ul class="pains">
+        <li>Не понимаю, пора уходить или я просто устал.</li>
+        <li>Боюсь начинать заново после многих лет в одной профессии.</li>
+        <li>Не могу ни остаться, ни уйти с работы.</li>
+        <li>Повышение есть, а ощущения роста больше нет.</li>
+        <li>Постоянно обесценивают, а я не знаю, что с этим делать.</li>
+        <li>Мне страшно потерять квалификацию, переходя из специалиста в руководители.</li>
+        <li>Не получается дать подчинённым обратную связь.</li>
+        <li>Делегировать страшно: кажется, что потеряю контроль.</li>
+        <li>Команда перестала меня слышать.</li>
+        <li>Мне неловко говорить о своих достижениях: кажется, что хвастаюсь.</li>
+      </ul>
+      <p class="pains-foot">Мы не ищем правильный ответ. Мы выясняем, что именно для вас сейчас важно.</p>
+    </div>
+  </section>
+
+  <!-- 7. Форматы и цены -->
+  <section class="section" id="formats" aria-labelledby="formats-h">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Форматы и цены</p>
+        <h2 id="formats-h">Индивидуальные сессии онлайн</h2>
+        <p class="lead">Цены одинаковы для личного и руководительского трека.</p>
+      </div>
+      <div class="prices">
+        <article class="price-card">
+          <h3>Ознакомительная встреча</h3>
+          <p class="meta">15 минут</p>
+          <p class="amount">Бесплатно</p>
+          <p class="muted small">Вы проговариваете запрос и понимаете, подходит ли вам формат.</p>
+        </article>
+        <article class="price-card">
+          <h3>Разовая сессия</h3>
+          <p class="meta">60 минут</p>
+          <p class="amount">9 000 ₽ <span>/ €100</span></p>
+          <p class="muted small">Подходит, если есть один конкретный вопрос. Вы уходите с разобранной ситуацией и планом ближайших шагов.</p>
+        </article>
+        <article class="price-card">
+          <h3>Малый пакет</h3>
+          <p class="meta">4 сессии · действует 2 месяца</p>
+          <p class="amount">32 000 ₽ <span>/ €360</span></p>
+          <p class="muted small">Подходит, если переход требует нескольких шагов. Между сессиями вы пробуете решения и возвращаетесь с результатами.</p>
+        </article>
+        <article class="price-card">
+          <h3>Расширенный пакет</h3>
+          <p class="meta">8 сессий · действует 4 месяца</p>
+          <p class="amount">61 000 ₽ <span>/ €680</span></p>
+          <p class="muted small">Подходит для смены роли или направления. Вы проходите изменение с опорой от начала до первых результатов.</p>
+        </article>
+      </div>
+      <div class="terms">
+        <ul>
+          <li>Все услуги только онлайн.</li>
+          <li>Оплата 100% заранее.</li>
+          <li>Перенос сессии бесплатно при уведомлении не позднее чем за 24 часа.</li>
+          <li>Срок действия пакета отсчитывается с даты оплаты.</li>
+        </ul>
+        <p>Полные условия в <a href="oferta.html">публичной оферте</a>.</p>
+      </div>
+      <p class="disclaimer">Консультационные и коучинговые услуги направлены на постановку целей, поиск решений и планирование действий. Они не являются психотерапией, психиатрической помощью или медицинской консультацией и не заменяют их.</p>
+      <div class="actions">
+        <a class="btn js-tg" href="#final">Выбрать формат в Telegram</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Результаты -->
+  <section class="section light" aria-labelledby="results-h">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Что вы получаете</p>
+        <h2 id="results-h">С чем вы уходите после работы</h2>
+        <p class="lead">Коучинг не гарантирует конкретного результата. Он даёт материал для решения, которое вы принимаете сами.</p>
+      </div>
+      <dl class="results">
+        <div><dt>Ясность в ситуации</dt><dd>Вы отделяете факты от предположений и видите, что на самом деле происходит.</dd></div>
+        <div><dt>Сформулированный запрос</dt><dd>Размытое беспокойство превращается в вопрос, с которым можно работать.</dd></div>
+        <div><dt>Видимые развилки</dt><dd>Понятно, какие варианты реально существуют и по каким критериям между ними выбирать.</dd></div>
+        <div><dt>Опоры</dt><dd>Вы знаете, на какие ресурсы, ценности и опыт можете опереться.</dd></div>
+        <div><dt>План шагов</dt><dd>После каждой сессии остаются конкретные ближайшие действия.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- 9. Отзывы: блок скрыт до появления подтверждённых отзывов.
+       [ЗАПОЛНИТЬ: реальные отзывы с согласия клиентов]. Чтобы показать блок, удалите атрибут hidden. -->
+  <section class="section" id="reviews" aria-labelledby="reviews-h" hidden>
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Отзывы</p>
+        <h2 id="reviews-h">Отзывы клиентов</h2>
+      </div>
+      <div class="reviews">
+        <figure class="review">
+          <blockquote>[ЗАПОЛНИТЬ: текст отзыва с согласия клиента]</blockquote>
+          <figcaption>[ЗАПОЛНИТЬ: имя или инициалы, роль]</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. Обо мне -->
+  <section class="section" id="about" aria-labelledby="about-h">
+    <div class="wrap about">
+      <div class="photo" role="img" aria-label="Место для фотографии Игоря">
+        <!-- [ЗАПОЛНИТЬ: фото Игоря]. Замените этот блок на <img src="igor.jpg" alt="Игорь, коуч" width="800" height="1000"> -->
+        <span class="mono mono-xl" aria-hidden="true">И</span>
+      </div>
       <div class="about-text">
-        <p><strong>IT-менеджмент → MBA → сертифицированный коуч.</strong> Мне интересны моменты, где логика уже не работает, а решение всё равно нужно принять — свой профессиональный путь я тоже пересматривал не раз.</p>
-        <p>Я не оцениваю ваш выбор — помогаю его увидеть и опереться на него. Холистический взгляд: карьера, отношения, внутреннее состояние — рассматриваю ситуацию целиком, а не только «проблему».</p>
-        <div class="langs">
-          <span>Русский</span>
-          <span>English</span>
-          <span>Deutsch</span>
-        </div>
+        <p class="eyebrow">Обо мне</p>
+        <h2 id="about-h">Меня зовут Игорь</h2>
+        <p>Первая управленческая роль, сложные разговоры с командой, выбор между стабильностью и новым направлением: многие ситуации, с которыми ко мне приходят, я проходил сам за десять лет в международном IT.</p>
+        <p>Для вас это значит, что не придётся объяснять, как устроена работа в компании, и мы сразу перейдём к сути. Этот опыт не делает меня экспертом в вашей жизни. Он помогает задавать точные вопросы, после которых вы сами видите ответ.</p>
+        <p>Сессии проходят индивидуально и онлайн, из любой точки, где вам удобно.</p>
       </div>
     </div>
   </section>
 
-  <section class="wrap fade-in">
-    <span class="eyebrow">Частые вопросы</span>
-    <h2>Прежде чем написать</h2>
-    <div class="faq">
-      <div class="faq-item">
-        <h3>Это психотерапия?</h3>
-        <p>Нет. Коучинг и консультирование работают с текущей ситуацией и следующим шагом, а не с прошлым. Если увижу, что нужна терапевтическая работа — честно скажу и порекомендую специалиста.</p>
+  <!-- 11. FAQ -->
+  <section class="section light" id="faq" aria-labelledby="faq-h">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">FAQ</p>
+        <h2 id="faq-h">Частые вопросы</h2>
       </div>
-      <div class="faq-item">
-        <h3>Что если я пока не понимаю, в чём именно вопрос?</h3>
-        <p>Это нормально и это тоже рабочий материал первой встречи — формулируем запрос вместе, не нужно приходить с готовой формулировкой.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Можно один разговор, без сопровождения?</h3>
-        <p>Да, экспресс-сессия и сессия «Ситуация + план» — самостоятельные форматы, не обязывают к продолжению.</p>
-      </div>
-      <div class="faq-item">
-        <h3>На каком языке проходят встречи?</h3>
-        <p>Русский, английский или немецкий — как вам удобнее.</p>
+      <div class="faq">
+        <details>
+          <summary>Чем коучинг отличается от психотерапии?</summary>
+          <p>Коучинг работает с целями, решениями и планом действий. Психотерапия занимается лечением и психологическими состояниями. Консультационные и коучинговые услуги направлены на постановку целей, поиск решений и планирование действий. Они не являются психотерапией, психиатрической помощью или медицинской консультацией и не заменяют их.</p>
+        </details>
+        <details>
+          <summary>Как проходит первая встреча?</summary>
+          <p>Первая встреча ознакомительная и бесплатная, она длится 15 минут и проходит онлайн. Вы коротко рассказываете о запросе, я объясняю, как устроена работа. Вместе решаем, подходит ли вам этот формат. Встреча ни к чему не обязывает.</p>
+        </details>
+        <details>
+          <summary>Сколько сессий нужно?</summary>
+          <p>Это зависит от запроса. С одним конкретным вопросом бывает достаточно разовой сессии. Переходы, которые требуют нескольких шагов, удобнее разбирать в пакете из 4 или 8 сессий. Формат можно обсудить на ознакомительной встрече.</p>
+        </details>
+        <details>
+          <summary>Как проходят сессии?</summary>
+          <p>Индивидуально и онлайн, сессия длится 60 минут. Платформа: [ЗАПОЛНИТЬ: платформа для видеосвязи]. Каждая сессия идёт по четырём шагам: запрос, разбор, опоры, план действий.</p>
+        </details>
+        <details>
+          <summary>Как оплатить, если у меня нет российской карты?</summary>
+          <p>Цены указаны в рублях и в евро. Способы оплаты в евро: [ЗАПОЛНИТЬ: способы оплаты из-за рубежа]. Оплата вносится полностью до начала сессии или пакета.</p>
+        </details>
+        <details>
+          <summary>Что, если я не смогу прийти на сессию?</summary>
+          <p>Сессию можно перенести бесплатно, если предупредить не позднее чем за 24 часа. Остальные случаи описаны в <a href="oferta.html">публичной оферте</a>.</p>
+        </details>
+        <details>
+          <summary>Конфиденциально ли то, что я рассказываю?</summary>
+          <p>Да. Как коуч ICF я следую Этическому кодексу ICF, который требует сохранять конфиденциальность клиента. Порядок обработки ваших данных описан в <a href="privacy.html">политике конфиденциальности</a>.</p>
+        </details>
+        <details>
+          <summary>Дадите ли вы гарантии результата?</summary>
+          <p>Нет. Результат зависит не только от сессий, но и от ваших действий между ними. С моей стороны есть структура работы и внимание к вашему запросу, а решения и шаги остаются за вами.</p>
+        </details>
       </div>
     </div>
   </section>
 
-  <section class="final-cta wrap" id="contact">
-    <span class="eyebrow">Первый шаг</span>
-    <h2>Короткий разговор — начало</h2>
-    <p>Расскажите в двух словах, что происходит. Отвечу и предложу подходящий формат.</p>
-    <div class="hero-actions">
-      <a class="btn" href="https://t.me/tochka_perehoda_coach" target="_blank" rel="noopener">Написать в Telegram</a>
+  <!-- 12. Финальный CTA -->
+  <section class="section final" id="final" aria-labelledby="final-h">
+    <div class="wrap final-inner">
+      <span class="mono mono-lg" aria-hidden="true">И</span>
+      <h2 id="final-h">Начнём с короткого разговора</h2>
+      <p class="lead">Напишите в Telegram, чтобы договориться о бесплатной встрече на 15 минут. Вы проговорите запрос и решите, нужен ли следующий шаг.</p>
+      <a class="btn btn-lg js-tg" href="#final">Написать в Telegram</a>
+      <p class="muted small js-tg-placeholder">[ЗАПОЛНИТЬ: ссылка на Telegram]</p>
     </div>
   </section>
-
 </main>
 
-<footer class="wrap">
-  <div class="footer-top">
-    <div class="footer-brand">Игорь</div>
-    <div class="footer-links">
-      <a href="https://t.me/tochka_perehoda_coach" target="_blank" rel="noopener">Telegram</a>
-      <a href="https://youtube.com/REPLACE_ME" target="_blank" rel="noopener">YouTube</a>
-      <a href="https://vk.com/REPLACE_ME" target="_blank" rel="noopener">VK</a>
+<!-- 13. Футер -->
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <p class="brand"><span class="mono" aria-hidden="true">И</span><span class="brand-name">Точка перехода</span></p>
+      <p class="muted small">Ясность вместо готовых ответов</p>
+    </div>
+    <nav aria-label="Документы">
+      <p class="foot-h">Документы</p>
+      <ul>
+        <li><a href="oferta.html">Публичная оферта</a></li>
+        <li><a href="privacy.html">Политика конфиденциальности</a></li>
+        <li><a href="consent.html">Согласие на обработку персональных данных</a></li>
+        <li><a href="mailing-consent.html">Согласие на рассылку</a></li>
+      </ul>
+    </nav>
+    <div>
+      <p class="foot-h">Каналы</p>
+      <ul>
+        <li><a class="js-tg" href="#final">Telegram</a></li>
+        <li>Instagram: [ЗАПОЛНИТЬ: ссылка]</li>
+        <li>YouTube: [ЗАПОЛНИТЬ: ссылка, если активен]</li>
+        <li>VK: [ЗАПОЛНИТЬ: ссылка, если активен]</li>
+      </ul>
     </div>
   </div>
-  <div class="footer-legal">
-    ИП [реквизиты добавятся после регистрации кодов деятельности] · © <span id="year"></span> Игорь
+  <div class="wrap footer-bottom">
+    <p>© <span id="year">2026</span> «Точка перехода»</p>
+    <p>Реквизиты: [ЗАПОЛНИТЬ: реквизиты ИП]</p>
   </div>
 </footer>
 
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-
-  // Spine progress dot — the "transition point" traveling as the reader scrolls
-  var spine = document.getElementById('spine');
-  var dot = document.getElementById('spineDot');
-  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  function updateSpine(){
-    if (!spine || spine.offsetParent === null) return;
-    var scrollTop = window.scrollY || document.documentElement.scrollTop;
-    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    var pct = docHeight > 0 ? Math.min(1, Math.max(0, scrollTop / docHeight)) : 0;
-    var spineHeight = spine.offsetHeight;
-    dot.style.top = (pct * spineHeight) + 'px';
-  }
-
-  window.addEventListener('scroll', updateSpine, { passive: true });
-  window.addEventListener('resize', updateSpine);
-  updateSpine();
-
-  // Fade-in on scroll
-  if (!reduceMotion && 'IntersectionObserver' in window){
-    var observer = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if (entry.isIntersecting){
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15 });
-    document.querySelectorAll('.fade-in').forEach(function(el){ observer.observe(el); });
-  } else {
-    document.querySelectorAll('.fade-in').forEach(function(el){ el.classList.add('visible'); });
-  }
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>

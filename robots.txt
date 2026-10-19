@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# [ЗАПОЛНИТЬ: после выбора домена раскомментируйте строку и заполните sitemap.xml]
+# Sitemap: https://ДОМЕН/sitemap.xml
