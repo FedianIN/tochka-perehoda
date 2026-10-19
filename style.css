@@ -77,6 +77,8 @@ p, ul, ol, dl, dd { margin: 0; }
   font: 500 20px/1 var(--f-display); color: var(--accent);
 }
 .mono-lg { width: 60px; height: 60px; font-size: 34px; }
+.logo-mark { width: 40px; height: 40px; flex: none; }
+.logo-lg { width: 72px; height: 72px; }
 
 /* кнопки */
 .btn {
