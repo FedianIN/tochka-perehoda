@@ -123,10 +123,9 @@ main [id] { scroll-margin-top: 104px; }
 .gains b { color: var(--paper); font-weight: 500; }
 .fork { width: 100%; max-width: 420px; color: var(--paper); justify-self: center; }
 
-/* треки */
-.tracks { display: grid; gap: 20px; }
-.track { border: 1px solid var(--line); padding: 28px 24px; display: grid; gap: 14px; align-content: start; min-width: 0; }
-.track-label { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+/* запросы */
+.requests { border: 1px solid var(--line); padding: 28px 24px; display: grid; gap: 20px; min-width: 0; }
+.requests-list { font-size: 17px; }
 .dash { list-style: none; padding: 0; display: grid; gap: 10px; }
 .dash li { position: relative; padding-left: 22px; }
 .dash li::before { content: ""; position: absolute; left: 0; top: .82em; width: 12px; height: 1px; background: var(--accent); }
@@ -153,10 +152,6 @@ main [id] { scroll-margin-top: 104px; }
 .steps li { display: grid; gap: 10px; border-top: 1px solid var(--line); padding-top: 18px; }
 .step-n { font: 500 40px/1 var(--f-display); color: var(--ochre); font-variant-numeric: lining-nums tabular-nums; }
 .steps p { color: var(--muted); }
-.background-note { margin-top: 56px; display: grid; gap: 16px; max-width: 720px; }
-.background-note p:last-child { color: var(--muted); }
-.path { font: italic 500 clamp(22px, 5vw, 30px)/1.3 var(--f-display); }
-.path span { color: var(--ochre); font-style: normal; padding-inline: 4px; }
 
 /* чек-лист */
 .pains { list-style: none; padding: 0; display: grid; gap: 0; border-top: 1px solid var(--line); }
@@ -261,8 +256,8 @@ main [id] { scroll-margin-top: 104px; }
   main [id] { scroll-margin-top: 72px; }
   .hero { padding-block: 88px 104px; }
   .hero-grid { grid-template-columns: 1.3fr .7fr; gap: 56px; }
-  .tracks { grid-template-columns: 1fr 1fr; gap: 24px; }
-  .track { padding: 36px 32px; }
+  .requests { padding: 40px; }
+  .requests-list { grid-template-columns: 1fr 1fr; column-gap: 48px; row-gap: 14px; }
   .banner { grid-template-columns: 1fr auto; align-items: center; }
   .creds { grid-template-columns: repeat(4, 1fr); }
   .steps { grid-template-columns: repeat(4, 1fr); }
