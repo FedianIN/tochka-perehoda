@@ -121,7 +121,8 @@ main [id] { scroll-margin-top: 104px; }
 .gains li { position: relative; padding-left: 22px; color: var(--on-dark-muted); }
 .gains li::before { content: ""; position: absolute; left: 0; top: .8em; width: 12px; height: 1px; background: var(--ochre); }
 .gains b { color: var(--paper); font-weight: 500; }
-.fork { width: 100%; max-width: 420px; color: var(--paper); justify-self: center; }
+.hero-photo { margin: 0; width: 100%; max-width: 420px; justify-self: center; aspect-ratio: 3 / 4; overflow: hidden; border: 1px solid var(--line-dark); }
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; }
 
 /* запросы */
 .requests { border: 1px solid var(--line); padding: 28px 24px; display: grid; gap: 20px; min-width: 0; }
@@ -192,10 +193,20 @@ main [id] { scroll-margin-top: 104px; }
 
 /* обо мне */
 .about { display: grid; gap: 40px; }
-.photo {
-  aspect-ratio: 4 / 5; width: 100%; max-width: 360px; background: var(--graphite-2);
-  border: 1px solid var(--line-dark); display: grid; place-items: center;
+.photo { margin: 0; aspect-ratio: 4 / 5; width: 100%; max-width: 360px; background: var(--graphite-2); overflow: hidden; }
+.photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+
+/* галерея: на телефоне листается вбок внутри своего контейнера */
+.gallery-band { padding-block: 0 72px; }
+.gallery {
+  display: grid; grid-auto-flow: column; grid-auto-columns: 70%; gap: 12px;
+  overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+  padding-left: var(--gutter-l); padding-right: var(--gutter-r); scroll-padding-left: var(--gutter-l);
 }
+.gallery::-webkit-scrollbar { display: none; }
+.gallery figure { margin: 0; aspect-ratio: 4 / 5; overflow: hidden; scroll-snap-align: start; background: var(--graphite-2); }
+.gallery img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.85); transition: filter .4s; }
+.gallery figure:hover img { filter: none; }
 .about-text { display: grid; gap: 18px; max-width: 62ch; min-width: 0; }
 .about-text p { color: var(--on-dark-muted); }
 .about-text p:first-of-type { color: var(--paper); }
@@ -246,6 +257,7 @@ main [id] { scroll-margin-top: 104px; }
   .steps { grid-template-columns: 1fr 1fr; gap: 40px 32px; }
   .prices { grid-template-columns: 1fr 1fr; }
   .price-card-wide { grid-column: 1 / -1; }
+  .gallery { grid-auto-columns: 42%; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
 
@@ -265,5 +277,10 @@ main [id] { scroll-margin-top: 104px; }
   .price-card-wide { grid-template-columns: 1fr 1.4fr; align-items: center; }
   .results { grid-template-columns: 1fr 1fr; column-gap: 48px; }
   .about { grid-template-columns: 360px 1fr; gap: 64px; align-items: start; }
+  .gallery-band { padding-block: 0 104px; }
+  .gallery {
+    grid-auto-flow: row; grid-template-columns: repeat(3, 1fr); grid-auto-columns: auto;
+    gap: 16px; overflow: visible; max-width: var(--max); margin: 0 auto;
+  }
   .footer-grid { grid-template-columns: 1.2fr 1fr 1fr; }
 }
