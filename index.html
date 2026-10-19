@@ -76,7 +76,7 @@
 }
 </script>
 </head>
-<body>
+<body class="has-hero">
 <a class="skip" href="#main">Перейти к содержанию</a>
 
 <header class="site-header">
@@ -93,131 +93,160 @@
         <li><a href="#faq">FAQ</a></li>
       </ul>
     </nav>
-    <a class="btn btn-sm js-tg" href="#final">Telegram</a>
+    <a class="btn btn-sm btn-light js-tg" href="#final">Написать</a>
   </div>
 </header>
 
 <main id="main">
 
-  <!-- 1. Hero -->
+  <!-- Hero: фото на всю ширину -->
   <section class="hero" id="top">
-    <div class="wrap hero-grid">
-      <div class="hero-text">
-        <span class="mono mono-lg" aria-hidden="true">И</span>
-        <h1>Точка перехода</h1>
-        <p class="hero-tag">Коучинг для руководителей и тех, кто на перепутье</p>
-        <p class="tagline">Ясность вместо готовых ответов</p>
-        <p class="hero-note">Вы не обязаны принимать решение сегодня. Достаточно увидеть, из чего оно состоит.</p>
-        <ul class="gains" aria-label="С чем вы уходите с сессии">
-          <li><b>Ясная картина</b> ситуации: где факты, а где опасения</li>
-          <li><b>Реальные варианты</b> и критерии, по которым между ними выбирать</li>
-          <li><b>Конкретный следующий шаг</b> вместо общего «надо что-то менять»</li>
-        </ul>
-        <div class="actions">
-          <a class="btn js-tg" href="#final">Написать в Telegram</a>
-          <span class="muted small">Индивидуально, онлайн</span>
-        </div>
+    <img class="hero-bg" src="img/hero-transition.jpg" width="975" height="1300" alt="" fetchpriority="high">
+    <div class="wrap hero-inner">
+      <div class="hero-main">
+        <p class="hero-eyebrow"><span class="dot" aria-hidden="true"></span>Коучинг для руководителей и тех, кто на перепутье</p>
+        <h1>Ясность вместо<br><span class="h1-accent"><span class="arrow" aria-hidden="true">→</span> готовых ответов</span></h1>
       </div>
-      <figure class="hero-photo">
-        <img src="img/hero-transition.jpg" width="975" height="1300" alt="Портрет с двойной экспозицией: лицо женщины с закрытыми глазами и её же силуэт рядом" fetchpriority="high">
-      </figure>
-    </div>
-  </section>
-
-  <!-- 2. Запросы -->
-  <section class="section" id="requests" aria-labelledby="requests-h">
-    <div class="wrap">
-      <div class="head">
-        <p class="eyebrow">Запросы</p>
-        <h2 id="requests-h">С чем ко мне приходят</h2>
-        <p class="lead">Когда ни один из вариантов не очевиден или работа требует навыков, которым нигде не учили.</p>
-      </div>
-      <div class="requests">
-        <ul class="dash requests-list">
-          <li>Уходить или оставаться на текущей работе</li>
-          <li>Смена профессии или начало с нуля</li>
-          <li>Поиск смысла и направления в работе</li>
-          <li>Ситуации на перепутье, когда сложно выбрать</li>
-          <li>Обратная связь и сложные разговоры</li>
-          <li>Делегирование без потери контроля</li>
-          <li>Переход из специалиста в руководителя</li>
-          <li>Повышение есть, а роста больше нет</li>
-        </ul>
-        <p class="gain"><span>Что вы получаете</span>Понимание, чего вы на самом деле хотите, список реальных вариантов и продуманный первый шаг: решение, разговор или изменение, которое можно начать уже на следующей неделе.</p>
+      <div class="hero-side">
+        <p>Вы не обязаны принимать решение сегодня. Достаточно увидеть, из чего оно состоит. Индивидуально и онлайн.</p>
+        <a class="btn js-tg" href="#final">Написать в Telegram</a>
       </div>
     </div>
   </section>
 
-  <!-- 3. CTA-баннер -->
-  <section class="section section-tight" aria-labelledby="intro-h">
+  <!-- Что вы получаете -->
+  <section class="section paper rounded-top" aria-labelledby="gains-h">
     <div class="wrap">
-      <div class="banner">
-        <div>
-          <p class="eyebrow">Бесплатно · 15 минут</p>
-          <h2 id="intro-h" class="h-banner">Ознакомительная встреча</h2>
-          <p class="muted">За 15 минут вы проговорите свой запрос вслух, часто это уже проясняет многое, и поймёте, подходит ли вам такой формат работы. Ни к чему не обязывает.</p>
-        </div>
-        <a class="btn js-tg" href="#final">Записаться в Telegram</a>
+      <div class="head center">
+        <p class="eyebrow">Что вы получаете</p>
+        <h2 id="gains-h">С чем вы уходите<br>после сессии</h2>
+        <p class="lead">Коучинг не гарантирует конкретного результата. Он даёт материал для решения, которое вы принимаете сами.</p>
+      </div>
+      <div class="gains-grid">
+        <article class="gain-card">
+          <span class="check" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 12.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h3>Ясная картина<br>ситуации</h3>
+          <figure class="rounded-img"><img src="img/session-chairs.jpg" width="960" height="1200" alt="Два кресла напротив друг друга у светлого окна, двое людей во время разговора" loading="lazy"></figure>
+          <p>Вы отделяете факты от опасений и видите, что на самом деле происходит.</p>
+        </article>
+        <article class="gain-card">
+          <span class="check" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 12.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h3>Реальные варианты<br>и критерии выбора</h3>
+          <figure class="rounded-img"><img src="img/mood-reading.jpg" width="736" height="980" alt="Человек в очках читает книгу у окна, чёрно-белое фото" loading="lazy"></figure>
+          <p>Понятно, какие пути действительно существуют и по каким критериям между ними выбирать.</p>
+        </article>
+        <article class="gain-card">
+          <span class="check" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 12.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h3>Конкретный<br>следующий шаг</h3>
+          <figure class="rounded-img"><img src="img/mood-key.jpg" width="1040" height="1300" alt="Латунный ключ на ручке зелёной двери" loading="lazy"></figure>
+          <p>Каждая сессия заканчивается ближайшими действиями, а не общим «надо что-то менять».</p>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- 4. Принципы работы -->
-  <section class="light creds-band" aria-labelledby="creds-h">
+  <!-- Факты о формате -->
+  <section class="section dark" aria-labelledby="facts-h">
     <div class="wrap">
-      <p class="eyebrow creds-h" id="creds-h">На что вы можете рассчитывать</p>
-      <ul class="creds">
-        <li><b>Конфиденциально</b><span>То, что вы рассказываете, остаётся между нами</span></li>
-        <li><b>Решение за вами</b><span>Без готовых рецептов и советов, как жить</span></li>
-        <li><b>Конкретика</b><span>Каждая сессия заканчивается ближайшими шагами</span></li>
-        <li><b>Онлайн</b><span>Индивидуально, из любой точки, где вам удобно</span></li>
+      <div class="head center">
+        <p class="eyebrow">Как устроена работа</p>
+        <h2 id="facts-h">Короткий путь<br>от запроса к шагу</h2>
+        <p class="lead">Конфиденциально. Решение остаётся за вами.</p>
+      </div>
+      <ul class="facts">
+        <li><b>15 мин</b><span>бесплатная ознакомительная встреча</span></li>
+        <li><b>60 мин</b><span>длится одна сессия</span></li>
+        <li><b>4 шага</b><span>в каждой сессии: от запроса до плана</span></li>
+        <li><b>24 часа</b><span>достаточно, чтобы бесплатно перенести встречу</span></li>
       </ul>
     </div>
   </section>
 
-  <!-- 5. Мой подход -->
-  <section class="section" id="approach" aria-labelledby="approach-h">
-    <div class="wrap">
-      <div class="head">
-        <p class="eyebrow">Как проходит сессия</p>
-        <h2 id="approach-h">Четыре шага от запроса к действию</h2>
-        <p class="lead">Вы не получите готовых рецептов. Вы увидите свою ситуацию ясно и сами выберете, что делать дальше.</p>
+  <!-- Обо мне -->
+  <section class="section white" id="about" aria-labelledby="about-h">
+    <div class="wrap about">
+      <figure class="about-photo"><img src="img/igor.jpg" width="867" height="1300" alt="Игорь, коуч" loading="lazy"></figure>
+      <div class="about-text">
+        <p class="eyebrow">Обо мне</p>
+        <h2 id="about-h">Игорь</h2>
+        <p>Моя задача на сессии в том, чтобы вы увидели свою ситуацию ясно и выбрали свой шаг. Я задаю вопросы, после которых ответ становится виден вам самим.</p>
+        <p>Рабочие ситуации не придётся долго объяснять: я знаю их изнутри, поэтому мы сразу переходим к вашему вопросу.</p>
+        <div class="actions"><a class="btn btn-outline js-tg" href="#final">Написать в Telegram</a></div>
       </div>
-      <ol class="steps">
-        <li>
-          <span class="step-n">01</span>
-          <h3>Выслушать запрос</h3>
-          <p>Понять, с чем вы пришли, и отделить сам запрос от шума вокруг него.</p>
-          <p class="step-gain">У вас: точная формулировка того, что на самом деле беспокоит</p>
-        </li>
-        <li>
-          <span class="step-n">02</span>
-          <h3>Разбор ситуации</h3>
-          <p>Структурно разобрать, что известно, что является предположением, где реальные развилки и что мешает.</p>
-          <p class="step-gain">У вас: карта ситуации вместо круга одних и тех же мыслей</p>
-        </li>
-        <li>
-          <span class="step-n">03</span>
-          <h3>Поддержка и опора</h3>
-          <p>Найти, на что можно опереться: ресурсы, ценности, прошлый опыт и ограничения, которые стоит принять всерьёз.</p>
-          <p class="step-gain">У вас: понимание, на что вы можете рассчитывать</p>
-        </li>
-        <li>
-          <span class="step-n">04</span>
-          <h3>План из конкретных шагов</h3>
-          <p>Завершить сессию ближайшими действиями, а не общими намерениями.</p>
-          <p class="step-gain">У вас: конкретные шаги, которые можно начать делать сразу</p>
-        </li>
-      </ol>
     </div>
   </section>
 
-  <!-- 6. Чек-лист -->
-  <section class="section light" aria-labelledby="pains-h">
+  <!-- Запросы -->
+  <section class="section dark" id="requests" aria-labelledby="requests-h">
     <div class="wrap">
-      <div class="head">
+      <div class="head center">
+        <p class="eyebrow">Запросы</p>
+        <h2 id="requests-h">С чем ко мне приходят</h2>
+        <p class="lead">Когда ни один из вариантов не очевиден или работа требует навыков, которым нигде не учили.</p>
+      </div>
+      <div class="req-grid">
+        <article class="req-card req-photo">
+          <img src="img/mood-sculpture.jpg" width="736" height="1104" alt="" loading="lazy">
+          <div class="req-body">
+            <h3>Карьерные развилки</h3>
+            <ul><li>Уходить или оставаться на текущей работе</li><li>Смена профессии или начало с нуля</li></ul>
+          </div>
+        </article>
+        <article class="req-card">
+          <div class="req-body">
+            <h3>Смысл и направление</h3>
+            <ul><li>Поиск смысла и направления в работе</li><li>Ситуации на перепутье, когда сложно выбрать</li></ul>
+          </div>
+        </article>
+        <article class="req-card">
+          <div class="req-body">
+            <h3>Сложные разговоры</h3>
+            <ul><li>Обратная связь подчинённым</li><li>Делегирование без потери контроля</li></ul>
+          </div>
+        </article>
+        <article class="req-card">
+          <div class="req-body">
+            <h3>Роль руководителя</h3>
+            <ul><li>Переход из специалиста в руководителя</li><li>Повышение есть, а роста больше нет</li></ul>
+          </div>
+        </article>
+      </div>
+      <div class="actions center">
+        <a class="btn js-tg" href="#final">Обсудить мой запрос</a>
+        <a class="btn btn-ghost" href="#formats">Смотреть форматы</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Как проходит сессия -->
+  <section class="section paper" id="approach" aria-labelledby="approach-h">
+    <div class="wrap approach">
+      <div class="approach-text">
+        <div class="head">
+          <p class="eyebrow">Как проходит сессия</p>
+          <h2 id="approach-h">Четыре шага от запроса к действию</h2>
+          <p class="lead">Вы не получите готовых рецептов. Вы увидите свою ситуацию ясно и сами выберете, что делать дальше.</p>
+        </div>
+        <ol class="steps">
+          <li><span class="step-n">01</span><div><h3>Выслушать запрос</h3><p>Отделить сам запрос от шума вокруг него.</p><p class="step-gain">У вас: точная формулировка того, что на самом деле беспокоит</p></div></li>
+          <li><span class="step-n">02</span><div><h3>Разбор ситуации</h3><p>Что известно, что является предположением, где реальные развилки и что мешает.</p><p class="step-gain">У вас: карта ситуации вместо круга одних и тех же мыслей</p></div></li>
+          <li><span class="step-n">03</span><div><h3>Поддержка и опора</h3><p>Ресурсы, ценности, прошлый опыт и ограничения, которые стоит принять всерьёз.</p><p class="step-gain">У вас: понимание, на что вы можете рассчитывать</p></div></li>
+          <li><span class="step-n">04</span><div><h3>План из конкретных шагов</h3><p>Ближайшие действия, а не общие намерения.</p><p class="step-gain">У вас: шаги, которые можно начать делать сразу</p></div></li>
+        </ol>
+      </div>
+      <div class="approach-photos">
+        <figure class="rounded-img tall"><img src="img/mood-room.jpg" width="736" height="981" alt="Спокойная комната с лампой, двое людей беседуют в креслах" loading="lazy"></figure>
+        <figure class="rounded-img"><img src="img/mood-door.jpg" width="731" height="1300" alt="Деревянная дверь под светящейся вывеской вечером" loading="lazy"></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Если вы узнаёте себя -->
+  <section class="section white" aria-labelledby="pains-h">
+    <div class="wrap">
+      <div class="head center">
         <p class="eyebrow">Если вы узнаёте себя</p>
-        <h2 id="pains-h">С этими мыслями приходят чаще всего</h2>
+        <h2 id="pains-h">С этими мыслями<br>приходят чаще всего</h2>
       </div>
       <ul class="pains">
         <li>Не понимаю, пора уходить или я просто устал.</li>
@@ -235,24 +264,12 @@
     </div>
   </section>
 
-  <!-- Атмосферная галерея -->
-  <section class="gallery-band" aria-label="Атмосфера работы">
-    <div class="gallery">
-      <figure><img src="img/session-chairs.jpg" width="960" height="1200" alt="Два кресла напротив друг друга у светлого окна, двое людей во время разговора" loading="lazy"></figure>
-      <figure><img src="img/mood-key.jpg" width="1040" height="1300" alt="Латунный ключ на ручке зелёной двери" loading="lazy"></figure>
-      <figure><img src="img/mood-reading.jpg" width="736" height="980" alt="Человек в очках читает книгу у окна, чёрно-белое фото" loading="lazy"></figure>
-      <figure><img src="img/mood-sculpture.jpg" width="736" height="1104" alt="Фрагмент каменной скульптуры с закрытым глазом" loading="lazy"></figure>
-      <figure><img src="img/mood-room.jpg" width="736" height="981" alt="Спокойная комната с лампой, двое людей беседуют в креслах" loading="lazy"></figure>
-      <figure><img src="img/mood-door.jpg" width="731" height="1300" alt="Деревянная дверь под светящейся вывеской вечером" loading="lazy"></figure>
-    </div>
-  </section>
-
-  <!-- 7. Форматы и цены -->
-  <section class="section" id="formats" aria-labelledby="formats-h">
+  <!-- Форматы и цены -->
+  <section class="section paper rings" id="formats" aria-labelledby="formats-h">
     <div class="wrap">
-      <div class="head">
+      <div class="head center">
         <p class="eyebrow">Форматы и цены</p>
-        <h2 id="formats-h">Индивидуальные сессии онлайн</h2>
+        <h2 id="formats-h">Выберите формат,<br>который вам подходит</h2>
         <p class="lead">Один формат для любого запроса: индивидуально и онлайн.</p>
       </div>
       <div class="prices">
@@ -260,66 +277,44 @@
           <h3>Ознакомительная встреча</h3>
           <p class="meta">15 минут</p>
           <p class="amount">Бесплатно</p>
-          <p class="muted small">Вы проговариваете запрос и понимаете, подходит ли вам формат.</p>
+          <p class="desc">Вы проговариваете запрос и понимаете, подходит ли вам формат.</p>
+          <a class="btn btn-outline js-tg" href="#final">Записаться</a>
         </article>
         <article class="price-card">
           <h3>Разовая сессия</h3>
           <p class="meta">60 минут</p>
           <p class="amount">9 000 ₽ <span>/ €100</span></p>
-          <p class="muted small">Подходит, если есть один конкретный вопрос. Вы уходите с разобранной ситуацией и планом ближайших шагов.</p>
+          <p class="desc">Если есть один конкретный вопрос. Вы уходите с разобранной ситуацией и планом шагов.</p>
+          <a class="btn btn-outline js-tg" href="#final">Выбрать</a>
         </article>
-        <article class="price-card">
+        <article class="price-card featured">
+          <p class="tag">Для перехода в несколько шагов</p>
           <h3>Малый пакет</h3>
           <p class="meta">4 сессии · действует 2 месяца</p>
           <p class="amount">32 000 ₽ <span>/ €360</span></p>
-          <p class="muted small">Подходит, если переход требует нескольких шагов. Между сессиями вы пробуете решения и возвращаетесь с результатами.</p>
+          <p class="desc">Между сессиями вы пробуете решения и возвращаетесь с результатами.</p>
+          <a class="btn js-tg" href="#final">Выбрать</a>
         </article>
         <article class="price-card">
           <h3>Расширенный пакет</h3>
           <p class="meta">8 сессий · действует 4 месяца</p>
           <p class="amount">61 000 ₽ <span>/ €680</span></p>
-          <p class="muted small">Подходит для смены роли или направления. Вы проходите изменение с опорой от начала до первых результатов.</p>
+          <p class="desc">Для смены роли или направления: опора от начала до первых результатов.</p>
+          <a class="btn btn-outline js-tg" href="#final">Выбрать</a>
         </article>
       </div>
       <div class="terms">
-        <ul>
-          <li>Все услуги только онлайн.</li>
-          <li>Оплата 100% заранее.</li>
-          <li>Перенос сессии бесплатно при уведомлении не позднее чем за 24 часа.</li>
-          <li>Срок действия пакета отсчитывается с даты оплаты.</li>
-        </ul>
-        <p>Полные условия в <a href="oferta.html">публичной оферте</a>.</p>
-      </div>
-      <p class="disclaimer">Консультационные и коучинговые услуги направлены на постановку целей, поиск решений и планирование действий. Они не являются психотерапией, психиатрической помощью или медицинской консультацией и не заменяют их.</p>
-      <div class="actions">
-        <a class="btn js-tg" href="#final">Выбрать формат в Telegram</a>
+        <p>Все услуги только онлайн. Оплата 100% заранее. Перенос сессии бесплатно при уведомлении не позднее чем за 24 часа. Срок действия пакета отсчитывается с даты оплаты. Полные условия в <a href="oferta.html">публичной оферте</a>.</p>
+        <p class="disclaimer">Консультационные и коучинговые услуги направлены на постановку целей, поиск решений и планирование действий. Они не являются психотерапией, психиатрической помощью или медицинской консультацией и не заменяют их.</p>
       </div>
     </div>
   </section>
 
-  <!-- 8. Результаты -->
-  <section class="section light" aria-labelledby="results-h">
-    <div class="wrap">
-      <div class="head">
-        <p class="eyebrow">Что вы получаете</p>
-        <h2 id="results-h">С чем вы уходите после работы</h2>
-        <p class="lead">Коучинг не гарантирует конкретного результата. Он даёт материал для решения, которое вы принимаете сами.</p>
-      </div>
-      <dl class="results">
-        <div><dt>Ясность в ситуации</dt><dd>Вы отделяете факты от предположений и видите, что на самом деле происходит.</dd></div>
-        <div><dt>Сформулированный запрос</dt><dd>Размытое беспокойство превращается в вопрос, с которым можно работать.</dd></div>
-        <div><dt>Видимые развилки</dt><dd>Понятно, какие варианты реально существуют и по каким критериям между ними выбирать.</dd></div>
-        <div><dt>Опоры</dt><dd>Вы знаете, на какие ресурсы, ценности и опыт можете опереться.</dd></div>
-        <div><dt>План шагов</dt><dd>После каждой сессии остаются конкретные ближайшие действия.</dd></div>
-      </dl>
-    </div>
-  </section>
-
-  <!-- 9. Отзывы: блок скрыт до появления подтверждённых отзывов.
+  <!-- Отзывы: блок скрыт до появления подтверждённых отзывов.
        [ЗАПОЛНИТЬ: реальные отзывы с согласия клиентов]. Чтобы показать блок, удалите атрибут hidden. -->
-  <section class="section" id="reviews" aria-labelledby="reviews-h" hidden>
+  <section class="section white" id="reviews" aria-labelledby="reviews-h" hidden>
     <div class="wrap">
-      <div class="head">
+      <div class="head center">
         <p class="eyebrow">Отзывы</p>
         <h2 id="reviews-h">Отзывы клиентов</h2>
       </div>
@@ -332,30 +327,15 @@
     </div>
   </section>
 
-  <!-- 10. Обо мне -->
-  <section class="section" id="about" aria-labelledby="about-h">
-    <div class="wrap about">
-      <figure class="photo">
-        <img src="img/igor.jpg" width="867" height="1300" alt="Игорь, коуч" loading="lazy">
-      </figure>
-      <div class="about-text">
-        <p class="eyebrow">Обо мне</p>
-        <h2 id="about-h">Меня зовут Игорь</h2>
-        <p>Моя задача на сессии в том, чтобы вы увидели свою ситуацию ясно и выбрали свой шаг. Я задаю вопросы, после которых ответ становится виден вам самим.</p>
-        <p>Рабочие ситуации не придётся долго объяснять: я знаю их изнутри, поэтому мы сразу переходим к вашему вопросу.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- 11. FAQ -->
-  <section class="section light" id="faq" aria-labelledby="faq-h">
+  <!-- FAQ -->
+  <section class="section white" id="faq" aria-labelledby="faq-h">
     <div class="wrap">
-      <div class="head">
+      <div class="head center">
         <p class="eyebrow">FAQ</p>
         <h2 id="faq-h">Частые вопросы</h2>
       </div>
       <div class="faq">
-        <details>
+        <details open>
           <summary>Чем коучинг отличается от психотерапии?</summary>
           <p>Коучинг работает с целями, решениями и планом действий. Психотерапия занимается лечением и психологическими состояниями. Консультационные и коучинговые услуги направлены на постановку целей, поиск решений и планирование действий. Они не являются психотерапией, психиатрической помощью или медицинской консультацией и не заменяют их.</p>
         </details>
@@ -391,25 +371,38 @@
     </div>
   </section>
 
-  <!-- 12. Финальный CTA -->
-  <section class="section final" id="final" aria-labelledby="final-h">
-    <div class="wrap final-inner">
-      <span class="mono mono-lg" aria-hidden="true">И</span>
-      <h2 id="final-h">Начнём с короткого разговора</h2>
-      <p class="lead">Напишите в Telegram, чтобы договориться о бесплатной встрече на 15 минут. Вы проговорите запрос и решите, нужен ли следующий шаг.</p>
-      <a class="btn btn-lg js-tg" href="#final">Написать в Telegram</a>
-      <p class="muted small js-tg-placeholder">[ЗАПОЛНИТЬ: ссылка на Telegram]</p>
+  <!-- Финальный CTA -->
+  <section class="section white final-wrap" id="final" aria-labelledby="final-h">
+    <div class="wrap">
+      <div class="final">
+        <span class="mono mono-lg" aria-hidden="true">И</span>
+        <h2 id="final-h">Начнём с короткого разговора</h2>
+        <p class="lead">Напишите в Telegram, чтобы договориться о бесплатной встрече на 15 минут. Вы проговорите запрос и решите, нужен ли следующий шаг.</p>
+        <div class="actions center">
+          <a class="btn btn-lg js-tg" href="#final">Написать в Telegram</a>
+          <a class="btn btn-ghost" href="#formats">Форматы и цены</a>
+        </div>
+        <p class="small js-tg-placeholder">[ЗАПОЛНИТЬ: ссылка на Telegram]</p>
+      </div>
     </div>
   </section>
 </main>
 
-<!-- 13. Футер -->
 <footer class="site-footer">
   <div class="wrap footer-grid">
-    <div>
+    <div class="foot-brand">
       <p class="brand"><span class="mono" aria-hidden="true">И</span><span class="brand-name">Точка перехода</span></p>
-      <p class="muted small">Ясность вместо готовых ответов</p>
+      <p class="foot-tagline">Ясность вместо<br><span>готовых ответов</span></p>
     </div>
+    <nav aria-label="Разделы">
+      <p class="foot-h">Разделы</p>
+      <ul>
+        <li><a href="#requests">Запросы</a></li>
+        <li><a href="#approach">Подход</a></li>
+        <li><a href="#formats">Форматы и цены</a></li>
+        <li><a href="#faq">Частые вопросы</a></li>
+      </ul>
+    </nav>
     <nav aria-label="Документы">
       <p class="foot-h">Документы</p>
       <ul>

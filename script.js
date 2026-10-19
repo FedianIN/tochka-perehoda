@@ -15,6 +15,14 @@ const TELEGRAM_URL = "[ЗАПОЛНИТЬ: ссылка на Telegram]";
   var y = document.getElementById("year");
   if (y) y.textContent = new Date().getFullYear();
 
+  // шапка прозрачная поверх фото и плотная после прокрутки
+  var header = document.querySelector(".site-header");
+  if (header && document.body.classList.contains("has-hero")) {
+    var onScroll = function () { header.classList.toggle("scrolled", window.scrollY > 40); };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+  }
+
   // подсветка текущего раздела в навигации; скролл не перехватывается
   var links = document.querySelectorAll(".nav-links a");
   if (!("IntersectionObserver" in window) || !links.length) return;
