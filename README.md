@@ -28,7 +28,7 @@
 
 | Где | Что |
 | --- | --- |
-| `script.js`, строка 4 | Ссылка на Telegram. Одна строка, все кнопки сайта берут её отсюда |
+| Telegram | Подключён: https://t.me/igor_fedianin |
 | `index.html`, FAQ | Платформа для видеосвязи; способы оплаты в евро |
 | `img/` | Проверить права на фото из галереи до запуска рекламы. На `mood-key.jpg`, `mood-sculpture.jpg`, `mood-door.jpg`, `mood-room.jpg` есть чужие бренды и надписи (в том числе «therapy») |
 | `index.html`, футер | Реквизиты ИП; ссылки на Instagram, YouTube, VK |

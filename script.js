@@ -1,7 +1,7 @@
 // ===== Единственная настройка: ссылка на Telegram =====
-// [ЗАПОЛНИТЬ: ссылка на Telegram], например "https://t.me/username".
-// Пока здесь не https-ссылка, все кнопки ведут к финальному блоку страницы.
-const TELEGRAM_URL = "[ЗАПОЛНИТЬ: ссылка на Telegram]";
+// Ссылка на Telegram: все кнопки сайта берут её отсюда и из href в index.html.
+// При смене адреса поменяйте его и здесь, и в index.html (поиск по t.me/).
+const TELEGRAM_URL = "https://t.me/igor_fedianin";
 
 (function () {
   if (/^https:\/\//.test(TELEGRAM_URL)) {
