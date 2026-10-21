@@ -159,13 +159,7 @@ main [id] { scroll-margin-top: 110px; }
 .facts b { font: 500 clamp(34px, 8vw, 48px)/1 var(--f-display); color: var(--ochre); font-variant-numeric: lining-nums; }
 .facts span { font-size: 14px; color: var(--muted); max-width: 22ch; }
 
-/* обо мне */
-.about { display: grid; gap: 40px; align-items: center; }
-.about-photo { border-radius: var(--r); overflow: hidden; aspect-ratio: 4 / 5; max-width: 460px; width: 100%; background: var(--line); }
-.about-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; }
-.about-text { display: grid; gap: 18px; max-width: 58ch; min-width: 0; }
-.about-text h2 { font-size: clamp(40px, 8vw, 60px); }
-.about-text p:not(.eyebrow) { color: var(--muted); }
+
 
 /* запросы */
 .req-grid { display: grid; gap: 16px; }
@@ -320,7 +314,6 @@ main [id] { scroll-margin-top: 110px; }
   .hero-side { justify-self: end; }
   .rounded-top { border-radius: 40px 40px 0 0; margin-top: -40px; }
   .gains-grid { grid-template-columns: repeat(3, 1fr); gap: 32px; }
-  .about { grid-template-columns: 1fr 1.1fr; gap: 72px; }
   .req-grid { grid-template-columns: 1.2fr 1fr 1fr 1fr; }
   .req-card { min-height: 380px; }
   .approach { grid-template-columns: 1.1fr .9fr; gap: 64px; align-items: start; }
