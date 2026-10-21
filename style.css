@@ -122,7 +122,8 @@ main [id] { scroll-margin-top: 110px; }
 
 /* hero */
 .hero { position: relative; overflow: hidden; background: var(--graphite); color: var(--paper); }
-.hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 82% 50%; }
+.hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 60% 50%; }
+@media (min-width: 700px) { .hero-bg { object-position: 82% 50%; } }
 .hero::after {
   content: ""; position: absolute; inset: 0;
   background:

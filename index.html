@@ -26,7 +26,10 @@
 <link rel="manifest" href="site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500&display=swap">
+<link rel="preload" as="image" href="img/hero-stairs-mobile.jpg" media="(max-width: 699px)" fetchpriority="high">
+<link rel="preload" as="image" href="img/hero-stairs-1280.jpg" imagesrcset="img/hero-stairs-1280.jpg 1280w, img/hero-stairs.jpg 1920w" imagesizes="100vw" media="(min-width: 700px)" fetchpriority="high">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500&display=swap"></noscript>
 <link rel="stylesheet" href="style.css">
 <!-- Место для аналитики: подключить позже. Если аналитика ставит необязательные cookie,
      сначала добавить минималистичный cookie-баннер с отказом по умолчанию. -->
@@ -100,7 +103,10 @@
 
   <!-- Hero: фото на всю ширину -->
   <section class="hero" id="top">
-    <img class="hero-bg" src="img/hero-stairs.jpg" width="1920" height="1080" alt="" fetchpriority="high">
+    <picture>
+      <source media="(max-width: 699px)" srcset="img/hero-stairs-mobile.jpg" width="720" height="960">
+      <img class="hero-bg" src="img/hero-stairs-1280.jpg" srcset="img/hero-stairs-1280.jpg 1280w, img/hero-stairs.jpg 1920w" sizes="100vw" width="1920" height="1080" alt="" fetchpriority="high" decoding="async">
+    </picture>
     <div class="wrap hero-inner">
       <div class="hero-main">
         <p class="hero-eyebrow"><span class="dot" aria-hidden="true"></span>Коучинг для лидеров и тех, кто хочет управлять своей жизнью</p>
@@ -125,19 +131,19 @@
         <article class="gain-card">
           <span class="check" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 12.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           <h3>Ясная картина<br>ситуации</h3>
-          <figure class="rounded-img"><img src="img/gain-thread.jpg" width="1400" height="933" alt="Руки, запутанные в красной нити" loading="lazy"></figure>
+          <figure class="rounded-img"><img src="img/gain-thread-640.jpg" srcset="img/gain-thread-640.jpg 640w, img/gain-thread.jpg 1400w" sizes="(min-width: 900px) 340px, (min-width: 600px) 45vw, 90vw" width="1400" height="933" alt="Руки, запутанные в красной нити" loading="lazy"></figure>
           <p>Вы отделяете факты от опасений и видите, что на самом деле происходит.</p>
         </article>
         <article class="gain-card">
           <span class="check" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 12.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           <h3>Реальные варианты<br>и критерии выбора</h3>
-          <figure class="rounded-img"><img src="img/gain-cube.jpg" width="731" height="1300" alt="Разноцветный кубик Рубика в процессе сборки" loading="lazy"></figure>
+          <figure class="rounded-img"><img src="img/gain-cube-640.jpg" srcset="img/gain-cube-640.jpg 640w, img/gain-cube.jpg 731w" sizes="(min-width: 900px) 340px, (min-width: 600px) 45vw, 90vw" width="731" height="1300" alt="Разноцветный кубик Рубика в процессе сборки" loading="lazy"></figure>
           <p>Понятно, какие пути действительно существуют и по каким критериям между ними выбирать.</p>
         </article>
         <article class="gain-card">
           <span class="check" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 12.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           <h3>Конкретный<br>следующий шаг</h3>
-          <figure class="rounded-img"><img src="img/gain-stones.jpg" width="975" height="1300" alt="Рука кладёт верхний камень на пирамиду из камней у реки" loading="lazy"></figure>
+          <figure class="rounded-img"><img src="img/gain-stones-640.jpg" srcset="img/gain-stones-640.jpg 640w, img/gain-stones.jpg 975w" sizes="(min-width: 900px) 340px, (min-width: 600px) 45vw, 90vw" width="975" height="1300" alt="Рука кладёт верхний камень на пирамиду из камней у реки" loading="lazy"></figure>
           <p>Каждая сессия заканчивается ближайшими действиями, а не общим «надо что-то менять».</p>
         </article>
       </div>
@@ -164,7 +170,7 @@
   <!-- Обо мне -->
   <section class="section white" id="about" aria-labelledby="about-h">
     <div class="wrap about">
-      <figure class="about-photo"><img src="img/about-writing.jpg" width="1400" height="933" alt="Рука с ручкой над листами на деревянном столе, рядом чашка" loading="lazy"></figure>
+      <figure class="about-photo"><img src="img/about-writing-800.jpg" srcset="img/about-writing-800.jpg 800w, img/about-writing.jpg 1400w" sizes="(min-width: 900px) 460px, 90vw" width="1400" height="933" alt="Рука с ручкой над листами на деревянном столе, рядом чашка" loading="lazy"></figure>
       <div class="about-text">
         <p class="eyebrow">Обо мне</p>
         <h2 id="about-h">Игорь</h2>
@@ -185,7 +191,7 @@
       </div>
       <div class="req-grid">
         <article class="req-card req-photo">
-          <img src="img/req-lead.jpg" width="866" height="1300" alt="" loading="lazy">
+          <img src="img/req-lead-640.jpg" srcset="img/req-lead-640.jpg 640w, img/req-lead.jpg 866w" sizes="(min-width: 900px) 300px, (min-width: 600px) 45vw, 90vw" width="866" height="1300" alt="" loading="lazy">
           <div class="req-body">
             <h3>Роль руководителя</h3>
             <ul><li>Переход из специалиста в руководителя</li><li>Повышение есть, а роста больше нет</li></ul>
@@ -234,8 +240,8 @@
         </ol>
       </div>
       <div class="approach-photos">
-        <figure class="rounded-img tall"><img src="img/approach-talk.jpg" width="866" height="1300" alt="Двое людей разговаривают за столом, вид через стекло" loading="lazy"></figure>
-        <figure class="rounded-img"><img src="img/approach-water.jpg" width="975" height="1300" alt="Мужчина в белой рубашке под водой с закрытыми глазами" loading="lazy"></figure>
+        <figure class="rounded-img tall"><img src="img/approach-talk-480.jpg" srcset="img/approach-talk-480.jpg 480w, img/approach-talk.jpg 866w" sizes="(min-width: 900px) 230px, 45vw" width="866" height="1300" alt="Двое людей разговаривают за столом, вид через стекло" loading="lazy"></figure>
+        <figure class="rounded-img"><img src="img/approach-water-480.jpg" srcset="img/approach-water-480.jpg 480w, img/approach-water.jpg 975w" sizes="(min-width: 900px) 230px, 45vw" width="975" height="1300" alt="Мужчина в белой рубашке под водой с закрытыми глазами" loading="lazy"></figure>
       </div>
     </div>
   </section>
@@ -248,7 +254,7 @@
         <h2 id="pains-h">С этими мыслями<br>приходят чаще всего</h2>
       </div>
       <div class="pains-layout">
-      <figure class="rounded-img pains-photo"><img src="img/pains-labels.jpg" width="867" height="1300" alt="Чёрно-белый портрет: на лице наклеены бумажки со словами-ярлыками" loading="lazy"></figure>
+      <figure class="rounded-img pains-photo"><img src="img/pains-labels-640.jpg" srcset="img/pains-labels-640.jpg 640w, img/pains-labels.jpg 867w" sizes="(min-width: 900px) 400px, 90vw" width="867" height="1300" alt="Чёрно-белый портрет: на лице наклеены бумажки со словами-ярлыками" loading="lazy"></figure>
       <ul class="pains">
         <li>Не понимаю, пора уходить или я просто устал.</li>
         <li>Боюсь начинать заново после многих лет в одной профессии.</li>
