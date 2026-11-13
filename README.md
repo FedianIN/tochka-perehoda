@@ -73,6 +73,13 @@
 
 В рекламных ссылках используйте UTM-метки, например `https://igor-fedianin.com/?utm_source=yandex&utm_medium=cpc&utm_campaign=coaching`.
 
+## Индексация: сейчас сайт закрыт
+
+Сайт временно скрыт от поисковиков и ИИ. Чтобы открыть:
+
+1. В `index.html`, `oferta.html` и `privacy.html` замените строку `<meta name="robots" content="noindex, nofollow, noarchive">` на `<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">`.
+2. В `robots.txt` у списка ИИ-ботов замените `Disallow: /` на `Allow: /` и добавьте в конец строку `Sitemap: https://igor-fedianin.com/sitemap.xml`.
+
 ## Поисковики
 
 1. **Яндекс Вебмастер** (webmaster.yandex.ru): добавьте сайт, вставьте код в закомментированный тег `yandex-verification` в `index.html`, отправьте `sitemap.xml`, укажите регион.
