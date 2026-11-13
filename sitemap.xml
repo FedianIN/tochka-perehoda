@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Юридические страницы закрыты от индексации (noindex), поэтому в карту сайта не входят. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://igor-fedianin.com/</loc><lastmod>2026-10-21</lastmod></url>
+  <url>
+    <loc>https://igor-fedianin.com/</loc>
+    <lastmod>2026-11-13</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-fedianin.com/oferta.html</loc>
+    <lastmod>2026-11-13</lastmod>
+  </url>
+  <url>
+    <loc>https://igor-fedianin.com/privacy.html</loc>
+    <lastmod>2026-11-13</lastmod>
+  </url>
 </urlset>

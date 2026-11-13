@@ -1,4 +1,51 @@
+# Точка перехода — igor-fedianin.com
+# Сайт открыт для поисковых систем и ИИ-ассистентов.
+
 User-agent: *
+Allow: /
+Disallow: /404.html
+
+# Яндекс: не считать страницы с рекламными метками отдельными
+User-agent: Yandex
+Allow: /
+Disallow: /404.html
+Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term&yclid&gclid&fbclid
+
+# ИИ-поиск и ассистенты: доступ разрешён явно
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: YandexAdditional
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
 Allow: /
 
 Sitemap: https://igor-fedianin.com/sitemap.xml
