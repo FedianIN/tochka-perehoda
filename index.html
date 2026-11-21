@@ -32,7 +32,7 @@
 <meta name="twitter:description" content="Коучинг для тех, кто чувствует в себе силы на большее, но не знает, с чего начать.">
 <meta name="twitter:image" content="https://igor-fedianin.com/assets/og-image.png">
 
-<meta name="theme-color" content="#0a1a16">
+<meta name="theme-color" content="#202327">
 <meta name="color-scheme" content="light">
 <meta name="format-detection" content="telephone=no">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -42,6 +42,7 @@
 <link rel="alternate" type="text/markdown" href="llms.txt" title="Краткое описание сайта для ИИ-ассистентов">
 
 <script>document.documentElement.classList.add('js');</script>
+<link rel="preload" href="assets/fonts/fira-sans-cyrillic-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/style.css">
 
 <script type="application/ld+json">
@@ -160,29 +161,31 @@
 
   <!-- 1. Первый экран -->
   <section class="hero dark">
-    <div class="glow glow--a" aria-hidden="true"></div>
-    <div class="glow glow--b" aria-hidden="true"></div>
     <div class="container hero__grid">
       <div class="hero__text">
         <p class="eyebrow">Коучинг онлайн · индивидуально</p>
-        <h1>Вы способны на&nbsp;большее. <em>Начнём с&nbsp;ясности.</em></h1>
+        <h1><span class="line">Вы способны</span> <span class="line">на&nbsp;большее.</span> <em class="line">Начнём с&nbsp;ясности.</em></h1>
         <p class="lead">Для тех, кто чувствует в себе силы на большее, но не понимает, с чего начать. Разбираем, что вас держит, и находим первый шаг — ваш, а не чужой.</p>
         <div class="actions">
-          <a class="btn" href="https://t.me/igor_fedianin" target="_blank" rel="noopener" data-goal="tg_hero">Начать с бесплатной встречи</a>
-          <a class="btn btn--ghost" href="#check">Узнать свою ситуацию</a>
+          <a class="btn btn--lg" href="https://t.me/igor_fedianin" target="_blank" rel="noopener" data-goal="tg_hero">Начать с бесплатной встречи</a>
         </div>
         <p class="hero__by">15 минут · бесплатно · без обязательств</p>
+        <ul class="hero__proof" aria-label="Кто ведёт сессии">
+          <li>Сертифицированный коуч ICF</li>
+          <li>10 лет руководил командами в IT</li>
+          <li>RU · EN · DE</li>
+        </ul>
       </div>
 
-      <!-- ФОТО 1 (главное). Как заменить заглушку на снимок — см. README.md -->
-      <div class="hero__visual" role="img" aria-label="Место для портрета Игоря">
+      <!-- ФОТО 1 (главное). Как заменить иллюстрацию на снимок — см. README.md -->
+      <div class="hero__visual" data-speed="0.85" role="img" aria-label="Иллюстрация: развилка и выбранный путь вперёд">
         <svg viewBox="0 0 480 520" fill="none">
           <defs>
             <linearGradient id="gp" x1="240" y1="300" x2="400" y2="40" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#ff6b35"/><stop offset="1" stop-color="#ffd27a"/>
+              <stop stop-color="#cc4c28"/><stop offset="1" stop-color="#f0866a"/>
             </linearGradient>
             <radialGradient id="gd" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(240 300) scale(130)">
-              <stop stop-color="#ff8a4c" stop-opacity=".55"/><stop offset="1" stop-color="#ff8a4c" stop-opacity="0"/>
+              <stop stop-color="#cc4c28" stop-opacity=".5"/><stop offset="1" stop-color="#cc4c28" stop-opacity="0"/>
             </radialGradient>
           </defs>
           <circle cx="240" cy="300" r="130" fill="url(#gd)"/>
@@ -190,14 +193,13 @@
           <path class="p-dim p-branch" d="M240 300 C 170 240, 110 200, 70 110"/>
           <path class="p-dim p-branch" d="M240 300 C 330 290, 400 300, 450 250"/>
           <path class="p-main" d="M240 300 C 290 220, 330 150, 392 52" stroke="url(#gp)"/>
-          <path d="M366 60 L394 48 L398 79" stroke="#ffd27a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M366 60 L394 48 L398 79" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
           <circle class="ring" cx="240" cy="300" r="26"/>
           <circle class="ring ring--2" cx="240" cy="300" r="26"/>
-          <circle cx="240" cy="300" r="13" fill="#ff6b35"/>
+          <circle cx="240" cy="300" r="13" fill="#c2ccce"/>
         </svg>
         <span class="float float--a"><b>Ясная картина</b>где факты, а где опасения</span>
         <span class="float float--b"><b>Первый шаг</b>конкретный и ваш</span>
-        <span class="ph__note"><b>Фото 1 · портрет</b>Игорь по пояс, взгляд в камеру, тёмный или нейтральный фон. Вертикаль 4:5, от 1200×1500 px.</span>
       </div>
     </div>
   </section>
@@ -210,11 +212,21 @@
     </div>
   </div>
 
+  <!-- 2а. Цифры: только факты, которые уже есть на сайте. Счётчики запускаются при появлении (js/main.js) -->
+  <section class="stats" aria-label="Коротко в цифрах">
+    <div class="container stats__grid">
+      <div class="stat reveal"><p class="stat__n"><span data-count="10">10</span><small>лет</small></p><p class="stat__l">управлял международными командами в&nbsp;IT</p></div>
+      <div class="stat reveal"><p class="stat__n"><span data-count="3">3</span><small>языка</small></p><p class="stat__l">сессии на русском, английском и&nbsp;немецком</p></div>
+      <div class="stat reveal"><p class="stat__n"><span data-count="15">15</span><small>минут</small></p><p class="stat__l">первая встреча, бесплатно и&nbsp;без обязательств</p></div>
+      <div class="stat reveal"><p class="stat__n"><span data-count="60">60</span><small>минут</small></p><p class="stat__l">длится сессия, онлайн из&nbsp;любой точки мира</p></div>
+    </div>
+  </section>
+
   <!-- 3. Узнавание -->
   <section class="section" id="why">
     <div class="container">
       <p class="eyebrow">Знакомо?</p>
-      <h2 class="h-xl">Со стороны всё в порядке. <em>А внутри чувство, что вы живёте вполсилы.</em></h2>
+      <h2 class="h-xl">Со стороны всё в&nbsp;порядке. <em>А&nbsp;внутри чувство, что вы живёте вполсилы.</em></h2>
       <div class="cards cards--3">
         <article class="card reveal">
           <h3>Силы есть, направления нет</h3>
@@ -237,7 +249,7 @@
   <section class="section section--tint" id="result">
     <div class="container">
       <p class="eyebrow">Что изменится</p>
-      <h2>С чем вы приходите и <em>с чем уходите с сессии</em></h2>
+      <h2>С&nbsp;чем вы приходите и&nbsp;<em>с&nbsp;чем уходите с&nbsp;сессии</em></h2>
       <div class="compare">
         <div class="compare__col compare__col--before reveal">
           <p class="compare__label">Сейчас</p>
@@ -248,7 +260,7 @@
             <li>Начало откладывается на потом.</li>
           </ul>
         </div>
-        <div class="compare__arrow" aria-hidden="true">→</div>
+        <div class="compare__arrow" aria-hidden="true"><svg viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></div>
         <div class="compare__col compare__col--after reveal">
           <p class="compare__label">После сессии</p>
           <ul>
@@ -266,7 +278,7 @@
   <section class="section" id="topics">
     <div class="container">
       <p class="eyebrow">С чем можно прийти</p>
-      <h2>Пять ситуаций, в которых <em>разговор сдвигает с места</em></h2>
+      <h2>Пять ситуаций, в&nbsp;которых <em>разговор сдвигает с&nbsp;места</em></h2>
       <div class="bento">
         <article class="tile tile--hero reveal">
           <span class="tile__num">01</span>
@@ -330,23 +342,33 @@
 
   <!-- 7. Как это работает -->
   <section class="section dark" id="process">
-    <div class="glow glow--c" aria-hidden="true"></div>
-    <div class="container">
-      <p class="eyebrow">Как это работает</p>
-      <h2>От «не знаю, с чего начать» <em>до первого шага</em></h2>
-      <ol class="steps">
-        <li class="reveal"><span class="steps__n" aria-hidden="true">1</span><h3>Называем запрос</h3><p>Отделяем то, что вас действительно волнует, от шума вокруг.</p></li>
-        <li class="reveal"><span class="steps__n" aria-hidden="true">2</span><h3>Разбираем ситуацию</h3><p>Что известно, что предположение, где реальные развилки и что мешает.</p></li>
-        <li class="reveal"><span class="steps__n" aria-hidden="true">3</span><h3>Находим опору</h3><p>Ваши ресурсы, ценности, прошлый опыт и ограничения, которые стоит принять всерьёз.</p></li>
-        <li class="reveal"><span class="steps__n" aria-hidden="true">4</span><h3>Выбираем шаг</h3><p>Ближайшие конкретные действия, а не общие намерения.</p></li>
-      </ol>
-      <ul class="promises">
+    <div class="container process">
+      <div class="process__head">
+        <p class="eyebrow">Как это работает</p>
+      <h2>От «не&nbsp;знаю, с&nbsp;чего начать» <em>до&nbsp;первого шага</em></h2>
+        <ul class="promises">
         <li>Решение остаётся за вами</li>
         <li>Конфиденциально, по кодексу ICF</li>
         <li>Каждая сессия заканчивается шагами</li>
         <li>Онлайн, из любой точки мира</li>
       </ul>
-      <p class="quote">Вы не обязаны принимать решение сегодня. Достаточно увидеть, из чего оно состоит.</p>
+      </div>
+      <div class="process__steps">
+        <span class="process__line" aria-hidden="true"></span>
+        <ol class="steps">
+        <li class="reveal"><span class="steps__n" aria-hidden="true">1</span><h3>Называем запрос</h3><p>Отделяем то, что вас действительно волнует, от шума вокруг.</p></li>
+        <li class="reveal"><span class="steps__n" aria-hidden="true">2</span><h3>Разбираем ситуацию</h3><p>Что известно, что предположение, где реальные развилки и что мешает.</p></li>
+        <li class="reveal"><span class="steps__n" aria-hidden="true">3</span><h3>Находим опору</h3><p>Ваши ресурсы, ценности, прошлый опыт и ограничения, которые стоит принять всерьёз.</p></li>
+        <li class="reveal"><span class="steps__n" aria-hidden="true">4</span><h3>Выбираем шаг</h3><p>Ближайшие конкретные действия, а не общие намерения.</p></li>
+      </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7а. Главная мысль: слова проявляются по одному при прокрутке (js/main.js) -->
+  <section class="tagline" aria-label="Главная мысль">
+    <div class="container">
+      <p class="tagline__text" data-words><span class="line">Вы не обязаны принимать решение сегодня.</span> <span class="line accent">Достаточно увидеть, из&nbsp;чего оно состоит.</span></p>
     </div>
   </section>
 
@@ -354,7 +376,7 @@
   <section class="section" id="formats">
     <div class="container">
       <p class="eyebrow">Форматы и цены</p>
-      <h2>Выберите, <em>с чего начать</em></h2>
+      <h2>Выберите, <em>с&nbsp;чего начать</em></h2>
       <p class="section__lead">Все сессии проходят онлайн и индивидуально. Длительность сессии — 60 минут.</p>
       <div class="cards cards--4 prices">
         <article class="price reveal">
@@ -404,7 +426,7 @@
     <div class="container duo">
       <div>
         <p class="eyebrow">Честно о границах</p>
-        <h2 class="h-md">Когда коучинг не подойдёт</h2>
+        <h2 class="h-md">Когда коучинг не&nbsp;подойдёт</h2>
         <ul class="crosses">
           <li><b>Вам нужен готовый ответ.</b> Я не говорю, как жить и что выбрать. Решение принимаете вы.</li>
           <li><b>Вам нужна терапия или лечение.</b> Коучинг не заменяет психотерапию и медицинскую помощь.</li>
@@ -412,11 +434,7 @@
         </ul>
       </div>
       <aside class="coach reveal" aria-label="Кто ведёт сессии">
-        <!-- ФОТО 2 (портрет) -->
-        <div class="ph" role="img" aria-label="Место для портрета Игоря">
-          <span class="ph__tag">Фото · портрет</span>
-          <span>Игорь по пояс, спокойный взгляд в камеру, дневной свет. Вертикаль 4:5, от 800×1000 px.</span>
-        </div>
+        <!-- ФОТО 2 (портрет): вставьте сюда <picture> из README.md, карточка сама станет двухколоночной -->
         <div>
           <p class="eyebrow">Кто ведёт сессии</p>
           <h3>Игорь, коуч ICF</h3>
@@ -461,12 +479,10 @@
 
   <!-- 11. Финальный призыв -->
   <section class="cta dark" id="contact">
-    <div class="glow glow--a" aria-hidden="true"></div>
-    <div class="glow glow--b" aria-hidden="true"></div>
     <div class="container narrow">
-      <h2 class="h-xl">Первый шаг — <em>разговор на&nbsp;15&nbsp;минут</em></h2>
+      <h2>Первый шаг — <em>разговор на&nbsp;15&nbsp;минут</em></h2>
       <p>Напишите в Telegram пару слов о том, что вас сейчас занимает. Я отвечу лично и предложу время встречи.</p>
-      <a class="btn" href="https://t.me/igor_fedianin" target="_blank" rel="noopener" data-goal="tg_final">Написать в Telegram</a>
+      <a class="btn btn--lg" href="https://t.me/igor_fedianin" target="_blank" rel="noopener" data-goal="tg_final">Написать в Telegram</a>
       <p class="cta__note">Бесплатно и без обязательств · <a href="https://t.me/igor_fedianin" target="_blank" rel="noopener" data-goal="tg_final_link">@igor_fedianin</a></p>
     </div>
   </section>

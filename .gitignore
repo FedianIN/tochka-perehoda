@@ -1,0 +1,6 @@
+# Документы проекта живут в приватном репозитории FedianIN/coaching-docs
+_ПРОЕКТ-ДОКУМЕНТЫ/
+ИТОГИ-И-ПЛАН.md
+*.pdf
+WEBSITE COACHING-backup-*/
+.claude/

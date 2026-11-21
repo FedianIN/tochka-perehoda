@@ -15,19 +15,34 @@
   var burger = document.querySelector('.burger');
   var nav = document.getElementById('nav');
   var header = document.querySelector('.header');
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Один обработчик прокрутки на всё, не чаще одного раза за кадр */
+  var scrollTasks = [];
+  var ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () {
+      ticking = false;
+      scrollTasks.slice().forEach(function (fn) { fn(); });
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+
   function syncHeader() {
-    var open = burger && burger.getAttribute('aria-expanded') === 'true';
-    header.classList.toggle('is-solid', open || window.scrollY > 24);
+    header.classList.toggle('is-solid', window.scrollY > 24);
   }
   if (header) {
-    window.addEventListener('scroll', syncHeader, { passive: true });
+    scrollTasks.push(syncHeader);
     syncHeader();
   }
   function setMenu(open) {
     nav.classList.toggle('is-open', open);
+    document.documentElement.classList.toggle('menu-open', open);
     burger.setAttribute('aria-expanded', String(open));
     burger.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
-    syncHeader();
   }
   if (burger && nav) {
     burger.addEventListener('click', function () {
@@ -58,6 +73,124 @@
     reveals.forEach(function (el) { io.observe(el); });
   } else {
     reveals.forEach(function (el) { el.classList.add('is-in'); });
+  }
+
+  /* ---------- Текущий раздел в меню ---------- */
+  if (nav && 'IntersectionObserver' in window) {
+    var navLinks = {};
+    nav.querySelectorAll('a[href^="#"]').forEach(function (a) { navLinks[a.getAttribute('href').slice(1)] = a; });
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var link = navLinks[entry.target.id];
+        if (!link) return;
+        if (entry.isIntersecting) {
+          Object.keys(navLinks).forEach(function (k) { navLinks[k].removeAttribute('aria-current'); });
+          link.setAttribute('aria-current', 'true');
+        } else if (link.getAttribute('aria-current')) {
+          link.removeAttribute('aria-current');
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    Object.keys(navLinks).forEach(function (id) {
+      var section = document.getElementById(id);
+      if (section) spy.observe(section);
+    });
+  }
+
+  /* ---------- Крупная фраза: слова проявляются по одному ---------- */
+  document.querySelectorAll('[data-words]').forEach(function (block) {
+    var words = [];
+    var walker = document.createTreeWalker(block, NodeFilter.SHOW_TEXT);
+    var nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(function (node) {
+      var parts = node.nodeValue.split(/( +)/);
+      if (parts.length === 1 && !parts[0].trim()) return;
+      var frag = document.createDocumentFragment();
+      parts.forEach(function (part) {
+        if (!part) return;
+        if (!part.trim()) { frag.appendChild(document.createTextNode(part)); return; }
+        var span = document.createElement('span');
+        span.className = 'w';
+        span.textContent = part;
+        frag.appendChild(span);
+        words.push(span);
+      });
+      node.parentNode.replaceChild(frag, node);
+    });
+
+    if (reduceMotion) {
+      words.forEach(function (w) { w.classList.add('is-on'); });
+      return;
+    }
+    var next = 0;
+    function update() {
+      var trigger = window.innerHeight * 0.72;
+      while (next < words.length && words[next].getBoundingClientRect().top < trigger) {
+        words[next].classList.add('is-on');
+        next++;
+      }
+      if (next >= words.length) {
+        var i = scrollTasks.indexOf(update);
+        if (i > -1) scrollTasks.splice(i, 1);
+      }
+    }
+    scrollTasks.push(update);
+    update();
+  });
+
+  /* ---------- Счётчики: от 0 до значения при появлении ---------- */
+  var counters = document.querySelectorAll('[data-count]');
+  if (counters.length && !reduceMotion && 'IntersectionObserver' in window) {
+    var easeOutExpo = function (t) { return t >= 1 ? 1 : 1 - Math.pow(2, -10 * t); };
+    var runCounter = function (el) {
+      var target = parseInt(el.dataset.count, 10);
+      var duration = 1600;
+      var start = null;
+      var step = function (now) {
+        if (start === null) start = now;
+        var t = Math.min((now - start) / duration, 1);
+        el.textContent = String(Math.round(target * easeOutExpo(t)));
+        if (t < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+      /* Страховка: если вкладка в фоне и кадры не идут, показываем итог */
+      setTimeout(function () { el.textContent = String(target); }, duration + 300);
+    };
+    counters.forEach(function (el) { el.textContent = '0'; });
+    var counterIo = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        runCounter(entry.target);
+        counterIo.unobserve(entry.target);
+      });
+    }, { threshold: 0.6 });
+    counters.forEach(function (el) { counterIo.observe(el); });
+  }
+
+  /* ---------- Параллакс: элемент с data-speed отстаёт от прокрутки ---------- */
+  if (!reduceMotion) {
+    document.querySelectorAll('[data-speed]').forEach(function (el) {
+      var speed = parseFloat(el.dataset.speed) || 1;
+      scrollTasks.push(function () {
+        var y = window.scrollY;
+        if (y > window.innerHeight * 1.5) return;
+        el.style.transform = 'translate3d(0,' + (y * (1 - speed)).toFixed(1) + 'px,0)';
+      });
+    });
+  }
+
+  /* ---------- Линия прогресса в блоке «Как это работает» ---------- */
+  var processSteps = document.querySelector('.process__steps');
+  if (processSteps) {
+    var line = processSteps.querySelector('.process__line');
+    var syncLine = function () {
+      var r = processSteps.getBoundingClientRect();
+      var p = (window.innerHeight * 0.6 - r.top) / r.height;
+      line.style.setProperty('--p', Math.max(0, Math.min(1, p)).toFixed(3));
+    };
+    if (reduceMotion) line.style.setProperty('--p', '1');
+    else { scrollTasks.push(syncLine); syncLine(); }
   }
 
   /* ---------- Самопроверка ---------- */
