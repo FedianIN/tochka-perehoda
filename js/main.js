@@ -199,10 +199,10 @@
   var text = document.getElementById('check-text');
   var copyBtn = document.getElementById('check-copy');
   var topics = {
-    self: 'самореализация',
-    career: 'карьерные развилки',
-    role: 'роль руководителя',
-    talk: 'сложные разговоры'
+    soft: 'soft skills, которые AI сделал важными',
+    lead: 'управление агентами и людьми',
+    role: 'новый вид специалиста',
+    self: 'не потерять себя'
   };
 
   function checked() {
@@ -216,14 +216,14 @@
       var count = {};
       items.forEach(function (i) { count[i.dataset.topic] = (count[i.dataset.topic] || 0) + 1; });
       var top = Object.keys(count).sort(function (a, b) { return count[b] - count[a]; })[0];
-      text.textContent = 'Отмечено: ' + items.length + '. Ближе всего тема «' + topics[top] +
-        '». Этого достаточно, чтобы начать разговор: скопируйте отмеченное и пришлите мне одним сообщением.';
+      text.textContent = 'Отмечено: ' + items.length + '. Ближе всего опора «' + topics[top] +
+        '». Этого достаточно, чтобы начать разговор: скопируй отмеченное и пришли мне одним сообщением.';
       result.hidden = false;
     });
 
     copyBtn.addEventListener('click', function () {
       var lines = checked().map(function (i) { return '— ' + i.nextElementSibling.textContent; });
-      var message = 'Здравствуйте, Игорь. Мне знакомо:\n' + lines.join('\n');
+      var message = 'Привет, Игорь. Мне знакомо:\n' + lines.join('\n');
       var done = function () {
         copyBtn.textContent = 'Скопировано';
         setTimeout(function () { copyBtn.textContent = 'Скопировать отмеченное'; }, 2500);

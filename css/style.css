@@ -274,6 +274,7 @@ html:not(.js) .nav a:not(.btn) { font-size: 14px; line-height: 20px; padding: 8p
 .tile__link { margin-top: 24px; color: var(--accent-soft); font-weight: 600; text-decoration: none; }
 .tile__link::after { content: " →"; }
 .tile__link:hover { text-decoration: underline; }
+.tile__link--dark { color: var(--accent-ink); }
 
 /* ---------- Самопроверка ---------- */
 .check { display: grid; gap: 12px; }

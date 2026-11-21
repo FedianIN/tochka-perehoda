@@ -4,3 +4,6 @@ _ПРОЕКТ-ДОКУМЕНТЫ/
 *.pdf
 WEBSITE COACHING-backup-*/
 .claude/
+
+# Контекст для Claude, не публикуется
+CLAUDE.md
