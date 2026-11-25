@@ -47,8 +47,8 @@
 }
 
 :root {
-  --bg: #ffffff;
-  --tint: #eef0f1;    /* светлые панели */
+  --bg: #eef0f1;
+  --tint: #ffffff;    /* светлые панели (чередуются с фоном) */
   --surface: #ffffff;
   --ink: #202327;     /* почти чёрный */
   --muted: #40474f;   /* графит */
@@ -69,13 +69,13 @@
   --shadow: none;
   --ease: cubic-bezier(.22, 1, .36, 1);
   --font: "Fira Sans", Arial, system-ui, sans-serif;
-  /* Радиусы: у Rijksmuseum почти прямые углы */
-  --r-md: 2px;
-  --r-lg: 2px;
-  --r-xl: 2px;
-  --r-2xl: 2px;
-  --r-3xl: 2px;
-  --r-full: 2px;
+  /* Радиусы дизайна B: теги 6, кнопки 10, карточки и блоки 14 */
+  --r-md: 6px;
+  --r-lg: 10px;
+  --r-xl: 10px;
+  --r-2xl: 14px;
+  --r-3xl: 14px;
+  --r-full: 6px;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -94,8 +94,8 @@ button, input, select, textarea { font: inherit; }
 /* ---------- Текстовые стили ---------- */
 /* Заголовки: Semibold, без курсива. На телефоне на одну ступень меньше. */
 h1, h2, h3 { margin: 0; font-family: var(--font); font-weight: 700; letter-spacing: .01em; text-transform: uppercase; text-wrap: balance; }
-h1 { font-size: 36px; line-height: 40px; }                        /* Heading 2 → Heading 1 на десктопе */
-h2 { font-size: 28px; line-height: 36px; margin-bottom: 24px; }   /* Heading 3 → Heading 2 */
+h1 { font-size: 38px; line-height: 42px; }
+h2 { font-size: 30px; line-height: 36px; margin-bottom: 24px; }
 h3 { font-size: 18px; line-height: 24px; } /* Heading 6 */
 .h-md { font-size: 28px; line-height: 36px; }                     /* Heading 4 → Heading 3 */
 /* Выделенные слова в заголовках: цвет, без смены шрифта и начертания */
@@ -103,8 +103,8 @@ h1 em, h2 em { font-style: normal; color: var(--accent-ink); }
 .dark h1 em, .dark h2 em { color: var(--accent-soft); }
 
 /* Caption 3: 12/16 Semibold, капслок */
-.eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; line-height: 16px; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; color: var(--muted); margin-bottom: 16px; }
-.eyebrow::before { content: ""; width: 8px; height: 8px; border-radius: var(--r-full); background: var(--accent); flex: none; }
+.eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; line-height: 16px; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; color: var(--accent-ink); margin-bottom: 20px; }
+.eyebrow::before { content: "\2014"; flex: none; }
 /* Body 7: 18/28 Regular */
 .lead { font-size: 18px; line-height: 28px; max-width: 680px; margin-top: 24px; }
 .section__lead { color: var(--muted); max-width: 680px; margin-bottom: 32px; font-size: 18px; line-height: 28px; }
@@ -116,18 +116,18 @@ h1 em, h2 em { font-style: normal; color: var(--accent-ink); }
 
 /* ---------- Тёмные блоки ---------- */
 .dark { background: var(--deep); color: #ffffff; position: relative; isolation: isolate; } /* без overflow: hidden, иначе не работает sticky */
-.dark .eyebrow { color: var(--mint); }
+.dark .eyebrow { color: var(--accent-soft); }
 .dark .lead, .dark p { color: #d8dfe0; }
 
 /* ---------- Кнопки ---------- */
 /* Button-md: 16/24 Semibold, отступы 8 и 12 px */
-.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 8px 12px; border: 0; border-radius: var(--r-xl); background: var(--accent); color: var(--on-accent); font: 700 16px/24px var(--font); text-decoration: none; text-align: center; cursor: pointer; transition: transform 300ms var(--ease), background-color 300ms var(--ease), color 300ms var(--ease); }
-.btn:hover { background: var(--accent-hover); }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 8px 16px; border: 0; border-radius: var(--r-xl); background: var(--accent-ink); color: var(--on-accent); font: 700 16px/24px var(--font); text-decoration: none; text-align: center; cursor: pointer; transition: transform 300ms var(--ease), background-color 300ms var(--ease), color 300ms var(--ease); }
+.btn:hover { background: #8f3016; }
 .btn:active { transform: scale(.98); }
 .btn--ghost, .btn--line { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 2px var(--ink); }
 .btn--ghost:hover, .btn--line:hover { background: var(--ink); color: #fff; }
-.dark .btn--ghost { color: #fff; box-shadow: inset 0 0 0 2px rgb(255 255 255 / .5); }
-.dark .btn--ghost:hover { background: #fff; color: var(--deep); }
+.dark .btn--ghost, .dark .btn--line { color: #fff; box-shadow: inset 0 0 0 2px rgb(255 255 255 / .5); }
+.dark .btn--ghost:hover, .dark .btn--line:hover { background: #fff; color: var(--deep); }
 /* На тёмном фоне основная кнопка песочная: бирюза там теряется */
 .dark .btn:not(.btn--ghost):not(.btn--line), .price--main .btn, .check__result .btn:not(.btn--line) { background: var(--sand); color: #fff; }
 .dark .btn:not(.btn--ghost):not(.btn--line):hover, .price--main .btn:hover, .check__result .btn:not(.btn--line):hover { background: #fff; color: var(--ink); }
@@ -143,11 +143,11 @@ h1 em, h2 em { font-style: normal; color: var(--accent-ink); }
 .header { position: fixed; z-index: 50; top: 0; left: 0; right: 0; isolation: isolate; display: flex; justify-content: center; pointer-events: none; color: var(--ink); }
 .header .header__in { pointer-events: auto; position: relative; isolation: isolate; display: flex; align-items: center; justify-content: space-between; gap: 16px; width: 100%; max-width: var(--wrap); margin: 0; padding: 8px 16px; border-radius: 0; }
 /* Подложка на всю ширину вынесена в псевдоэлемент шапки: backdrop-filter на самой шапке сломал бы полноэкранное меню */
-.header::before { content: ""; position: absolute; inset: 0; z-index: -1; background: rgb(255 255 255 / .94); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--line); }
+.header::before { content: ""; position: absolute; inset: 0; z-index: -1; background: rgb(238 240 241 / .94); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--line); }
 .header.is-solid .header .btn { border-radius: var(--r-lg); }
 /* Логотип: Heading 6, 20/28 Semibold */
 .logo { display: inline-flex; align-items: center; gap: 8px; color: inherit; text-decoration: none; font-weight: 700; font-size: 18px; line-height: 28px; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
-.logo__dot { width: 12px; height: 12px; border-radius: var(--r-full); background: var(--accent); flex: none; }
+.logo__dot { width: 10px; height: 10px; border-radius: 3px; background: var(--accent); flex: none; }
 
 /* Кнопка меню: две линии превращаются в крестик */
 .burger { width: 40px; height: 40px; border: 0; border-radius: var(--r-lg); background: none; padding: 0; display: grid; place-content: center; gap: 8px; cursor: pointer; color: inherit; }
@@ -157,7 +157,7 @@ h1 em, h2 em { font-style: normal; color: var(--accent-ink); }
 
 /* Мобильное меню: панель на весь экран, ссылки появляются по очереди */
 .nav { display: flex; flex-direction: column; gap: 4px; }
-.js .nav { position: fixed; z-index: -2; inset: 0; height: 100vh; height: 100dvh; padding: 96px 32px 48px; background: rgb(255 255 255 / .96); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); opacity: 0; visibility: hidden; transition: opacity 300ms var(--ease), visibility 0s linear 300ms; overflow-y: auto; }
+.js .nav { position: fixed; z-index: -2; inset: 0; height: 100vh; height: 100dvh; padding: 96px 32px 48px; background: rgb(238 240 241 / .97); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); opacity: 0; visibility: hidden; transition: opacity 300ms var(--ease), visibility 0s linear 300ms; overflow-y: auto; }
 .js .nav.is-open { opacity: 1; visibility: visible; transition: opacity 300ms var(--ease); }
 /* Пункт меню на телефоне: Heading 5, 24/32 */
 .nav a:not(.btn) { color: inherit; text-decoration: none; padding: 12px 0; font-size: 24px; line-height: 32px; font-weight: 700; letter-spacing: .02em; text-transform: uppercase; transition: color 300ms var(--ease); }
@@ -184,7 +184,7 @@ html:not(.js) .nav a:not(.btn) { font-size: 14px; line-height: 20px; padding: 8p
 /* Заголовок первого экрана: градиент только на тексте, слева направо */
 .hero h1 { max-width: 680px; }
 .hero h1 .line { display: block; width: fit-content; transform-origin: 0 100%; }
-.hero h1 span.line { color: #fff; }
+.hero h1 span.line { color: var(--ink); }
 /* Строки заголовка поднимаются с лёгким поворотом, остальное проявляется следом */
 @media (prefers-reduced-motion: no-preference) {
   .js .hero h1 .line { animation: rise 1000ms var(--ease) both; }
@@ -196,13 +196,14 @@ html:not(.js) .nav a:not(.btn) { font-size: 14px; line-height: 20px; padding: 8p
 @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
 @keyframes rise { from { opacity: 0; transform: translateY(120%) rotate(3deg); } to { opacity: 1; transform: none; } }
 @keyframes fade-up { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
-.hero .lead { color: #e3e8e9; }
+.hero .lead { color: var(--muted); }
 .hero .actions .btn { flex: 0 1 auto; }
-/* Caption 2: 14/20 Regular */
-.hero__by { margin: 16px 0 0; font-size: 14px; line-height: 20px; color: #a9b3b6 !important; }
+.hero .btn:not(.btn--line) { background: var(--ink); }
+.hero .btn:not(.btn--line):hover { background: var(--accent-ink); }
+.hero__by { margin: 16px 0 0; font-size: 14px; line-height: 20px; color: var(--muted); }
 .hero__proof { display: flex; flex-wrap: wrap; gap: 8px; margin: 32px 0 0; }
-.hero__proof li { padding: 4px 12px; border-radius: var(--r-full); box-shadow: inset 0 0 0 1px rgb(255 255 255 / .18); font-size: 12px; line-height: 16px; font-weight: 500; color: #f2f4f5; } /* Caption 4 */
-.hero__visual { position: relative; aspect-ratio: 4 / 5; width: 100%; max-width: 440px; margin-inline: auto; border-radius: var(--r-3xl); background: rgb(255 255 255 / .04); box-shadow: inset 0 0 0 1px rgb(255 255 255 / .12); }
+.hero__proof li { padding: 4px 12px; border-radius: var(--r-md); box-shadow: inset 0 0 0 1px var(--line); font-size: 12px; line-height: 16px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.hero__visual { position: relative; aspect-ratio: 4 / 5; width: 100%; max-width: 440px; margin-inline: auto; border-radius: var(--r-3xl); background: var(--deep-2); }
 .hero__visual svg { position: absolute; inset: 0; width: 100%; height: 100%; }
 .hero__visual img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: inherit; }
 .p-dim { stroke: rgb(255 255 255 / .28); stroke-width: 3; stroke-linecap: round; stroke-dasharray: 2 12; }
@@ -218,19 +219,19 @@ html:not(.js) .nav a:not(.btn) { font-size: 14px; line-height: 20px; padding: 8p
 .float--b { right: -8px; top: 44%; }
 
 /* ---------- Бегущая строка ---------- */
-.marquee { overflow: hidden; background: var(--accent); color: #fff; padding: 16px 0; }
+.marquee { overflow: hidden; background: var(--deep); color: #fff; padding: 16px 0; }
 /* linear здесь нужен намеренно: строка должна идти с постоянной скоростью */
 .marquee__track { display: flex; width: max-content; animation: marquee 44s linear infinite; }
 .marquee span { font-size: 18px; line-height: 28px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; white-space: nowrap; padding-right: 24px; } /* Title 2 */
-.marquee span::after { content: "•"; margin-left: 24px; opacity: .55; }
+.marquee span::after { content: "\2726"; margin-left: 24px; color: var(--accent-soft); }
 @keyframes marquee { to { transform: translateX(-50%); } }
 
 /* ---------- Цифры ---------- */
-.stats { padding: 64px 0; border-bottom: 1px solid var(--line); }
-.stats__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px 24px; }
-.stat__n { margin: 0 0 8px; font-size: 48px; line-height: 48px; font-weight: 700; letter-spacing: 0; font-variant-numeric: tabular-nums; } /* Heading 2 */
+.stats { padding: 80px 0; }
+.stats__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px 24px; border-top: 1px solid var(--line); padding-top: 28px; }
+.stat__n { margin: 0 0 8px; font-size: 52px; line-height: 52px; font-weight: 700; letter-spacing: 0; font-variant-numeric: tabular-nums; }
 .stat__n small { font-size: 20px; line-height: 28px; font-weight: 700; letter-spacing: 0; color: var(--accent-ink); margin-left: 4px; }
-.stat__l { margin: 0; color: var(--muted); font-size: 14px; line-height: 20px; max-width: 16em; } /* Body 6 */
+.stat__l { margin: 0; color: var(--muted); font-size: 12px; line-height: 16px; letter-spacing: .08em; text-transform: uppercase; font-weight: 600; max-width: 18em; }
 
 /* ---------- Секции ---------- */
 .section { padding: 64px 0; }
@@ -245,10 +246,27 @@ html:not(.js) .nav a:not(.btn) { font-size: 14px; line-height: 20px; padding: 8p
 .statement { margin: 48px 0 0; font-size: 24px; line-height: 32px; font-weight: 700; letter-spacing: 0; max-width: 680px; text-wrap: balance; }
 .statement::before { content: ""; display: block; width: 40px; height: 4px; border-radius: 0; background: var(--accent); margin-bottom: 16px; }
 
+/* ---------- «Знакомо?»: тёмный блок с контурным словом и ячейками ---------- */
+.why { padding: 80px 0 96px; overflow: hidden; }
+.why__bg { margin: 0 0 32px; text-align: center; font-size: clamp(48px, 12vw, 160px); line-height: 1; font-weight: 700; letter-spacing: .02em; text-transform: uppercase; color: transparent !important; -webkit-text-stroke: 1.5px var(--mint); opacity: .7; user-select: none; }
+.why .container > .eyebrow { display: flex; justify-content: center; }
+.why h2 { text-align: center; margin-inline: auto; max-width: 18em; }
+.why .cards { gap: 1px; background: var(--deep-2); border: 1px solid var(--deep-2); border-radius: var(--r-2xl); overflow: hidden; margin-top: 48px; counter-reset: cell; }
+.why .card { counter-increment: cell; display: flex; flex-direction: column; justify-content: space-between; gap: 16px; min-height: 240px; padding: 24px; border: 0; border-radius: 0; background: var(--deep); }
+.why .card:nth-child(even) { background: #2c3036; }
+.why .card::before { content: "0" counter(cell); width: auto; height: auto; margin: 0; background: none; font-size: 11px; line-height: 16px; font-weight: 600; letter-spacing: .12em; color: var(--mint); }
+.why .card::after { content: "\2198"; order: 3; display: grid; place-content: center; width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--accent-soft); color: var(--accent-soft); }
+.why .card:nth-child(even)::after { content: "\2197"; background: var(--accent-soft); color: var(--deep); }
+.why .card:hover { border: 0; }
+.why .card h3 { margin: 0 0 12px; color: #fff; font-size: 21px; line-height: 28px; text-transform: none; letter-spacing: 0; }
+.why .card p { color: #c2ccce; }
+.why .statement { margin: 64px auto 0; text-align: center; color: #fff; max-width: 22em; }
+.why .statement::before { margin-inline: auto; }
+
 /* ---------- Было → стало ---------- */
 .compare { display: grid; gap: 16px; margin-top: 40px; }
 .compare__col { border-radius: var(--r-3xl); padding: 32px 24px; }
-.compare__col--before { background: var(--surface); border: 1px solid var(--line); color: var(--muted); }
+.compare__col--before { background: var(--bg); border: 1px solid var(--line); color: var(--muted); }
 .compare__col--after { background: var(--deep); color: #ffffff; }
 .compare__label { font-size: 12px; line-height: 16px; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; margin-bottom: 16px; }
 .compare__col--after .compare__label { color: var(--mint); }
@@ -256,7 +274,7 @@ html:not(.js) .nav a:not(.btn) { font-size: 14px; line-height: 20px; padding: 8p
 .compare__col--before li::before { content: ""; position: absolute; left: 4px; top: 23px; width: 14px; height: 2px; background: #8c9095; transform: rotate(45deg); }
 .compare__col--before li::after { content: ""; position: absolute; left: 4px; top: 23px; width: 14px; height: 2px; background: #8c9095; transform: rotate(-45deg); }
 .compare__col--after li::before { content: ""; position: absolute; left: 4px; top: 17px; width: 14px; height: 8px; border-left: 2px solid var(--mint); border-bottom: 2px solid var(--mint); transform: rotate(-45deg); }
-.compare__arrow { display: grid; place-content: center; width: 48px; height: 48px; margin: -4px auto; border-radius: var(--r-full); background: var(--accent); color: var(--on-accent); transform: rotate(90deg); z-index: 1; }
+.compare__arrow { display: grid; place-content: center; width: 48px; height: 48px; margin: -4px auto; border-radius: 50%; background: var(--accent-ink); color: var(--on-accent); transform: rotate(90deg); z-index: 1; }
 .compare__arrow svg { width: 24px; height: 24px; }
 
 /* ---------- Темы: мозаика ---------- */
@@ -280,7 +298,7 @@ html:not(.js) .nav a:not(.btn) { font-size: 14px; line-height: 20px; padding: 8p
 .check { display: grid; gap: 12px; }
 .chip { position: relative; display: block; cursor: pointer; }
 .chip input { position: absolute; opacity: 0; inset: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
-.chip span { display: block; height: 100%; padding: 16px 16px 16px 48px; background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--r-2xl); transition: transform 300ms var(--ease), border-color 300ms var(--ease), background-color 300ms var(--ease); }
+.chip span { display: block; height: 100%; padding: 16px 16px 16px 48px; background: var(--bg); border: 1.5px solid var(--line); border-radius: var(--r-2xl); transition: transform 300ms var(--ease), border-color 300ms var(--ease), background-color 300ms var(--ease); }
 .chip:hover span { transform: translateY(-2px); border-color: #8c9095; }
 .chip:active span { transform: scale(.98); }
 .chip span::before { content: ""; position: absolute; left: 16px; top: 50%; width: 20px; height: 20px; margin-top: -10px; border: 1.5px solid #8c9095; border-radius: var(--r-md); background: var(--bg); }
@@ -317,6 +335,19 @@ html:not(.js) .nav a:not(.btn) { font-size: 14px; line-height: 20px; padding: 8p
 /* ---------- Цены ---------- */
 .price { display: flex; flex-direction: column; }
 .price--main { background: var(--deep); color: #ffffff; border-color: var(--deep); box-shadow: var(--shadow); }
+
+/* Форматы: тёмная таблица с тонкими линиями между ячейками */
+#formats .prices { gap: 1px; background: var(--deep-2); border: 1px solid var(--deep-2); border-radius: var(--r-2xl); overflow: hidden; }
+#formats .price { border: 0; border-radius: 0; background: var(--deep); padding: 28px; }
+#formats .price--main { background: var(--deep-2); }
+#formats .price h3 { color: #fff; font-size: 22px; line-height: 28px; }
+#formats .price__for { color: var(--accent-soft); }
+#formats .price__sum { color: #fff; }
+#formats .price__sum small, #formats .price__meta, #formats .price p:not([class]) { color: #c2ccce; }
+#formats .price--main .price__meta, #formats .price--main p:not([class]), #formats .price--main .price__sum small { color: #d8dfe0; }
+#formats .terms { color: #c2ccce; }
+#formats .terms a { color: var(--accent-soft); }
+#formats .section__lead { color: #c2ccce; }
 .price__for { font-size: 12px; line-height: 16px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent-ink); font-weight: 600; margin-bottom: 12px; }
 .price--main .price__for { color: var(--accent-soft); }
 .price__sum { font-size: 28px; line-height: 36px; font-weight: 700; letter-spacing: 0; margin: 16px 0 4px; white-space: nowrap; } /* Heading 4 */
@@ -334,19 +365,19 @@ html:not(.js) .nav a:not(.btn) { font-size: 14px; line-height: 20px; padding: 8p
 .crosses li { position: relative; padding: 16px 0 16px 32px; border-bottom: 1px solid #c2ccce; }
 .crosses li::before, .crosses li::after { content: ""; position: absolute; left: 2px; top: 27px; width: 16px; height: 2px; background: var(--accent); transform: rotate(45deg); }
 .crosses li::after { transform: rotate(-45deg); }
-.coach { display: grid; gap: 24px; padding: 24px; background: var(--surface); border-radius: var(--r-3xl); border: 1px solid var(--line); box-shadow: var(--shadow); align-self: start; }
+.coach { display: grid; gap: 24px; padding: 24px; background: var(--bg); border-radius: var(--r-3xl); border: 1px solid var(--line); box-shadow: var(--shadow); align-self: start; }
 .coach p { color: var(--muted); }
 .coach h3 { margin-bottom: 12px; font-size: 20px; line-height: 28px; } /* Heading 5 */
 .photo { border-radius: var(--r-2xl); width: 100%; max-width: 240px; aspect-ratio: 4 / 5; object-fit: cover; }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; }
-.chips span { padding: 4px 12px; border-radius: var(--r-full); background: var(--tint); color: var(--ink); font-size: 12px; line-height: 16px; font-weight: 700; } /* Caption 3 */
+.chips span { padding: 4px 12px; border-radius: var(--r-md); background: var(--tint); color: var(--ink); font-size: 12px; line-height: 16px; font-weight: 700; } /* Caption 3 */
 
 /* ---------- Вопросы ---------- */
 .faq details { border-bottom: 1px solid var(--line); }
 /* Title 2: 18/28 Medium */
 .faq summary { cursor: pointer; list-style: none; padding: 24px 48px 24px 0; position: relative; font-weight: 700; font-size: 18px; line-height: 28px; letter-spacing: 0; }
 .faq summary::-webkit-details-marker { display: none; }
-.faq summary::after { content: "+"; position: absolute; right: 0; top: 50%; width: 32px; height: 32px; margin-top: -16px; display: grid; place-content: center; border-radius: var(--r-full); background: var(--tint); font-weight: 400; font-size: 20px; line-height: 28px; transition: transform 300ms var(--ease), background-color 300ms var(--ease); }
+.faq summary::after { content: "+"; position: absolute; right: 0; top: 50%; width: 32px; height: 32px; margin-top: -16px; display: grid; place-content: center; border-radius: 50%; background: var(--tint); font-weight: 400; font-size: 20px; line-height: 28px; transition: transform 300ms var(--ease), background-color 300ms var(--ease); }
 .faq details[open] summary::after { transform: rotate(45deg); background: var(--accent); color: #fff; }
 .faq details p { color: var(--muted); padding-right: 24px; margin-bottom: 24px; }
 
@@ -359,12 +390,13 @@ html:not(.js) .nav a:not(.btn) { font-size: 14px; line-height: 20px; padding: 8p
 .cta a:not(.btn) { color: #fff; }
 
 /* ---------- Подвал ---------- */
-.footer { padding: 48px 0 calc(48px + env(safe-area-inset-bottom)); font-size: 14px; line-height: 20px; }
+.footer { padding: 56px 0 calc(40px + env(safe-area-inset-bottom)); font-size: 14px; line-height: 20px; background: var(--deep); color: #c2ccce; border-top: 1px solid var(--deep-2); }
+.footer .logo { color: #fff; }
 .footer__top { display: grid; gap: 24px; margin-bottom: 32px; }
 .footer__nav { display: flex; flex-wrap: wrap; gap: 4px 24px; }
-.footer__nav a { color: var(--ink); text-decoration: none; padding: 8px 0; }
-.footer__nav a:hover { color: var(--accent-ink); text-decoration: underline; }
-.disclaimer, .copy { color: var(--muted); font-size: 12px; line-height: 16px; max-width: 62em; } /* Caption 5 */
+.footer__nav a { color: #fff; text-decoration: none; padding: 8px 0; }
+.footer__nav a:hover { color: var(--accent-soft); text-decoration: underline; }
+.disclaimer, .copy { color: #a9b3b6; font-size: 12px; line-height: 16px; max-width: 62em; } /* Caption 5 */
 .copy { margin: 0; }
 
 /* ---------- Cookie ---------- */
@@ -432,8 +464,9 @@ html:not(.js) .nav a:not(.btn) { font-size: 14px; line-height: 20px; padding: 8p
 
 /* ---------- Десктоп ---------- */
 @media (min-width: 980px) {
-  h1 { font-size: 56px; line-height: 60px; }
-  h2 { font-size: 40px; line-height: 44px; }
+  h1 { font-size: clamp(52px, 5.2vw, 72px); line-height: 1.04; }
+  h2 { font-size: clamp(40px, 4.2vw, 56px); line-height: 1.08; }
+  .stat__n { font-size: 64px; line-height: 64px; }
   .h-md { font-size: 32px; line-height: 40px; }
   .lead { font-size: 20px; line-height: 28px; }
   .compare li { font-size: 18px; line-height: 28px; }
@@ -457,7 +490,6 @@ html:not(.js) .nav a:not(.btn) { font-size: 14px; line-height: 20px; padding: 8p
   .process__head { position: sticky; top: 96px; }
   .process .steps { grid-template-columns: 1fr; gap: 24px; }
   .process__steps { padding-left: 40px; }
-  .stat__n { font-size: 60px; line-height: 60px; }
   .compare { grid-template-columns: 1fr auto 1fr; align-items: stretch; gap: 0; }
   .compare__col { padding: 40px; }
   .compare__arrow { transform: none; align-self: center; margin: 0 -24px; width: 64px; height: 64px; }
