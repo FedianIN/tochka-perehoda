@@ -133,7 +133,7 @@ h1 em, h2 em { font-style: normal; color: var(--accent-ink); }
 .dark .btn:not(.btn--ghost):not(.btn--line), .check__result .btn:not(.btn--line) { background: var(--sand); color: #fff; }
 .dark .btn:not(.btn--ghost):not(.btn--line):hover, .check__result .btn:not(.btn--line):hover { background: #fff; color: var(--ink); }
 /* Button-sm: 14/20 */
-.btn--sm { min-height: 40px; padding: 8px 12px; font-size: 14px; line-height: 20px; box-shadow: none; }
+.btn--sm { min-height: 44px; padding: 8px 12px; font-size: 14px; line-height: 20px; box-shadow: none; }
 /* Button-lg: 18/28, для первого экрана и финального призыва */
 .btn--lg { min-height: 56px; padding: 12px 24px; font-size: 18px; line-height: 28px; }
 .btn--block { display: flex; width: 100%; }
@@ -150,7 +150,7 @@ h1 em, h2 em { font-style: normal; color: var(--accent-ink); }
 /* Подложка на всю ширину вынесена в псевдоэлемент шапки: backdrop-filter на самой шапке сломал бы полноэкранное меню */
 .header::before { content: ""; position: absolute; inset: 0; z-index: -1; background: rgb(238 240 241 / .94); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--line); }
 /* Логотип: Heading 6, 20/28 Semibold */
-.logo { display: inline-flex; align-items: center; gap: 8px; color: inherit; text-decoration: none; font-weight: 700; font-size: 18px; line-height: 28px; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
+.logo { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: inherit; text-decoration: none; font-weight: 700; font-size: 18px; line-height: 28px; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
 .logo__dot { width: 10px; height: 10px; border-radius: 3px; background: var(--accent); flex: none; }
 
 /* Кнопка меню: две линии превращаются в крестик */
@@ -191,14 +191,14 @@ html:not(.js) .nav a:not(.btn) { font-size: 14px; line-height: 20px; padding: 8p
 .hero h1 span.line { color: var(--ink); }
 /* Строки заголовка поднимаются с лёгким поворотом, остальное проявляется следом */
 @media (prefers-reduced-motion: no-preference) {
-  .js .hero h1 .line { animation: rise 1000ms var(--ease) both; }
-  .js .hero h1 .line:nth-child(2) { animation-delay: 100ms; }
-  .js .hero h1 .line:nth-child(3) { animation-delay: 200ms; }
+  .js .hero h1 .line { animation: rise 500ms var(--ease) both; }
+  .js .hero h1 .line:nth-child(2) { animation-delay: 50ms; }
+  .js .hero h1 .line:nth-child(3) { animation-delay: 100ms; }
   .js .hero__text > :not(h1) { animation: fade-up 800ms var(--ease) 400ms both; }
   .js .hero__visual { animation: fade-in 1000ms var(--ease) 300ms both; } /* только прозрачность: transform занят параллаксом */
 }
 @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
-@keyframes rise { from { opacity: 0; transform: translateY(120%) rotate(3deg); } to { opacity: 1; transform: none; } }
+@keyframes rise { from { opacity: 0; transform: translateY(40%); } to { opacity: 1; transform: none; } }
 @keyframes fade-up { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
 .hero .lead { color: var(--muted); }
 .hero .actions .btn { flex: 0 1 auto; }
@@ -206,9 +206,6 @@ html:not(.js) .nav a:not(.btn) { font-size: 14px; line-height: 20px; padding: 8p
 .hero__by { margin: 16px 0 0; font-size: 15px; line-height: 22px; color: var(--ink); }
 .hero__by b { font-weight: 700; }
 .hero__note { margin: 4px 0 0; font-size: 14px; line-height: 20px; color: var(--muted); }
-.hero__proof { display: flex; flex-wrap: wrap; gap: 8px; margin: 32px 0 0; }
-.hero__proof li { padding: 6px 12px; border-radius: var(--r-md); box-shadow: inset 0 0 0 1px var(--line); font-size: 14px; line-height: 20px; font-weight: 600; color: var(--ink); }
-.hero__proof li:first-child { background: var(--ink); color: #fff; box-shadow: none; }
 .hero__visual { position: relative; aspect-ratio: 4 / 5; width: 100%; max-width: 440px; margin-inline: auto; border-radius: var(--r-3xl); background: var(--deep-2); }
 .hero__visual img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: inherit; }
 /* Плавающие карточки: Title 4 + Caption 5 */
@@ -381,10 +378,6 @@ html.menu-open .sticky-cta { display: none; }
 .photo--quote figcaption { padding-top: 16px; border-top: 1px solid var(--deep-2); font-size: 13px; line-height: 16px; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; color: var(--mint); }
 
 /* ---------- С чем уходишь ---------- */
-.outcomes { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--line); }
-.outcomes ul { display: grid; gap: 16px; }
-.outcomes li { position: relative; padding-left: 32px; font-size: 18px; line-height: 28px; }
-.outcomes li::before { content: ""; position: absolute; left: 4px; top: 6px; width: 14px; height: 8px; border-left: 2px solid var(--accent-ink); border-bottom: 2px solid var(--accent-ink); transform: rotate(-45deg); }
 
 /* ---------- Вопросы ---------- */
 .faq details { border-bottom: 1px solid var(--line); }
@@ -412,7 +405,7 @@ html.menu-open .sticky-cta { display: none; }
 .footer .logo { color: #fff; }
 .footer__top { display: grid; gap: 24px; margin-bottom: 32px; }
 .footer__nav { display: flex; flex-wrap: wrap; gap: 4px 24px; }
-.footer__nav a { color: #fff; text-decoration: none; padding: 12px 0; }
+.footer__nav a { color: #fff; text-decoration: none; padding: 12px 0; min-width: 44px; display: inline-block; }
 .footer__nav a:hover { color: var(--accent-soft); text-decoration: underline; }
 .disclaimer, .copy { color: #a9b3b6; font-size: 13px; line-height: 18px; max-width: 62em; } /* Caption 5 */
 .copy { margin: 0; }
@@ -438,21 +431,10 @@ html.menu-open .sticky-cta { display: none; }
 html.js-failed .reveal { opacity: 1 !important; transform: none !important; }
 html.js-failed .tagline__text .w { opacity: 1 !important; }
 
-/* ---------- Появление при прокрутке ---------- */
+/* ---------- Появление при прокрутке: один спокойный fade, без сдвигов и задержек ---------- */
 @media (prefers-reduced-motion: no-preference) {
-  .js .reveal { opacity: 0; transform: translateY(32px); transition: opacity 700ms var(--ease), transform 700ms var(--ease); }
-  .js .reveal.is-in { opacity: 1; transform: none; }
-  .js .reveal:nth-child(2) { transition-delay: 80ms; }
-  .js .reveal:nth-child(3) { transition-delay: 160ms; }
-  .js .reveal:nth-child(4) { transition-delay: 240ms; }
-  .js .reveal:nth-child(5) { transition-delay: 320ms; }
-  .js .reveal.is-in:hover { transition-delay: 0s; transition-duration: 500ms; }
-}
-@media (prefers-reduced-motion: no-preference) and (min-width: 980px) {
-  /* Карточки шагов въезжают поочерёдно слева и справа */
-  .js .process .steps .reveal { transform: translateX(48px); transition-delay: 0s; }
-  .js .process .steps .reveal:nth-child(even) { transform: translateX(-48px); }
-  .js .process .steps .reveal.is-in { transform: none; }
+  .js .reveal { opacity: 0; transition: opacity 300ms var(--ease); }
+  .js .reveal.is-in { opacity: 1; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -471,8 +453,7 @@ html.js-failed .tagline__text .w { opacity: 1 !important; }
   .check { grid-template-columns: 1fr 1fr; }
   .bento { grid-template-columns: 1fr 1fr; }
   .tile--hero { grid-column: 1 / -1; }
-  .outcomes ul { grid-template-columns: 1fr 1fr; gap: 16px 32px; }
-  .coach:has(picture, .photo) { grid-template-columns: 1fr 320px; align-items: center; gap: 64px; }
+    .coach:has(picture, .photo) { grid-template-columns: 1fr 320px; align-items: center; gap: 64px; }
   .footer__top { grid-template-columns: auto 1fr; align-items: center; }
   .footer__nav { justify-content: flex-end; }
   .cookie { display: flex; align-items: center; gap: 16px; max-width: 720px; }
@@ -530,4 +511,16 @@ html.js-failed .tagline__text .w { opacity: 1 !important; }
 }
 
 /* Без одиноких слов в последней строке списков */
-.outcomes li, .crosses li { text-wrap: pretty; }
+
+/* ---------- Строка доверия над ценами ---------- */
+.trust { display: flex; flex-wrap: wrap; gap: 4px 24px; align-items: center; margin: 0 0 32px; padding: 16px 0; border-top: 1px solid var(--deep-2); border-bottom: 1px solid var(--deep-2); color: #e6ebec; font-size: 14px; line-height: 20px; }
+.trust b { color: #fff; font-weight: 700; }
+.trust__link { color: var(--accent-soft); display: inline-flex; align-items: center; min-height: 44px; }
+.trust__link:hover { color: #fff; }
+
+/* ---------- Группы в FAQ ---------- */
+.faq__group { margin: 40px 0 0; padding-bottom: 8px; border-bottom: 1px solid var(--ink); font-size: 13px; line-height: 16px; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; color: var(--accent-ink); }
+.faq__group:first-child { margin-top: 0; }
+
+/* Заглушка-ссылка (LinkedIn): подсвечена, пока не заменён адрес */
+.todo-link { background: var(--sand-tint); }

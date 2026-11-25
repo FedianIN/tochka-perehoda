@@ -115,7 +115,7 @@
     });
   }
 
-  /* ---------- Крупная фраза: слова проявляются по одному ---------- */
+  /* ---------- Крупная фраза: слова проявляются по одному (включается атрибутом data-words, сейчас не используется) ---------- */
   document.querySelectorAll('[data-words]').forEach(function (block) {
     var words = [];
     var walker = document.createTreeWalker(block, NodeFilter.SHOW_TEXT);
@@ -217,7 +217,22 @@
   var text = document.getElementById('check-text');
   var copyBtn = document.getElementById('check-copy');
   var tgBtn = document.getElementById('check-tg');
-  var tgBase = tgBtn ? tgBtn.getAttribute('href') : '';
+  var TG = 'https://t.me/igor_fedianin';
+  var tgBase = TG;
+  var MAX_URL = 1500; /* длиннее — часть клиентов Telegram обрезает ссылку */
+
+  /* Готовое сообщение для каждой кнопки записи: Игорь сразу видит, что выбрано */
+  var tgMessages = {
+    trial: 'Привет, Игорь. Хочу записаться на пробную сессию (50 минут).',
+    single: 'Привет, Игорь. Хочу записаться на разовую сессию (60 минут).',
+    pack: 'Привет, Игорь. Хочу записаться на «Перезагрузку» (5 сессий).',
+    program: 'Привет, Игорь. Хочу записаться в программу Breaking Changes (8 сессий).'
+  };
+  document.querySelectorAll('[data-tg]').forEach(function (a) {
+    var msg = tgMessages[a.dataset.tg];
+    if (msg) a.setAttribute('href', TG + '?text=' + encodeURIComponent(msg));
+  });
+
   var topics = {
     soft: 'soft skills, которые AI сделал важными',
     lead: 'управление агентами и людьми',
@@ -237,13 +252,24 @@
   if (form && result) {
     form.addEventListener('change', function () {
       var items = checked();
-      if (!items.length) { result.hidden = true; return; }
+      if (!items.length) {
+        result.hidden = true;
+        if (tgBtn) tgBtn.setAttribute('href', TG + '?text=' + encodeURIComponent(tgMessages.trial));
+        return;
+      }
       var count = {};
       items.forEach(function (i) { count[i.dataset.topic] = (count[i.dataset.topic] || 0) + 1; });
       var top = Object.keys(count).sort(function (a, b) { return count[b] - count[a]; })[0];
       text.textContent = 'Отмечено: ' + items.length + '. Ближе всего опора «' + topics[top] +
         '». Этого достаточно, чтобы начать разговор: кнопка «Записаться» откроет Telegram с отмеченным уже в сообщении.';
-      if (tgBtn) tgBtn.setAttribute('href', tgBase + '?text=' + encodeURIComponent(buildMessage()));
+      if (tgBtn) {
+        var url = tgBase + '?text=' + encodeURIComponent(buildMessage());
+        /* Слишком длинное сообщение режем до названия опоры: полный текст остаётся в «Скопировать» */
+        if (url.length > MAX_URL) {
+          url = tgBase + '?text=' + encodeURIComponent('Привет, Игорь. Хочу записаться на пробную сессию. Ближе всего опора «' + topics[top] + '».');
+        }
+        tgBtn.setAttribute('href', url);
+      }
       result.hidden = false;
     });
 
