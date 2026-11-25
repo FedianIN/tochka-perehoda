@@ -216,6 +216,8 @@
   var result = document.getElementById('check-result');
   var text = document.getElementById('check-text');
   var copyBtn = document.getElementById('check-copy');
+  var tgBtn = document.getElementById('check-tg');
+  var tgBase = tgBtn ? tgBtn.getAttribute('href') : '';
   var topics = {
     soft: 'soft skills, которые AI сделал важными',
     lead: 'управление агентами и людьми',
@@ -227,6 +229,11 @@
     return Array.prototype.slice.call(form.querySelectorAll('input:checked'));
   }
 
+  function buildMessage() {
+    var lines = checked().map(function (i) { return '— ' + i.nextElementSibling.textContent; });
+    return 'Привет, Игорь. Мне знакомо:\n' + lines.join('\n');
+  }
+
   if (form && result) {
     form.addEventListener('change', function () {
       var items = checked();
@@ -235,19 +242,22 @@
       items.forEach(function (i) { count[i.dataset.topic] = (count[i.dataset.topic] || 0) + 1; });
       var top = Object.keys(count).sort(function (a, b) { return count[b] - count[a]; })[0];
       text.textContent = 'Отмечено: ' + items.length + '. Ближе всего опора «' + topics[top] +
-        '». Этого достаточно, чтобы начать разговор: скопируй отмеченное и пришли мне одним сообщением.';
+        '». Этого достаточно, чтобы начать разговор: кнопка «Записаться» откроет Telegram с отмеченным уже в сообщении.';
+      if (tgBtn) tgBtn.setAttribute('href', tgBase + '?text=' + encodeURIComponent(buildMessage()));
       result.hidden = false;
     });
 
     copyBtn.addEventListener('click', function () {
-      var lines = checked().map(function (i) { return '— ' + i.nextElementSibling.textContent; });
-      var message = 'Привет, Игорь. Мне знакомо:\n' + lines.join('\n');
+      var message = buildMessage();
       var done = function () {
         copyBtn.textContent = 'Скопировано';
         setTimeout(function () { copyBtn.textContent = 'Скопировать отмеченное'; }, 2500);
       };
       if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(message).then(done, function () {});
+        navigator.clipboard.writeText(message).then(done, function () {
+          copyBtn.textContent = 'Не удалось скопировать';
+          setTimeout(function () { copyBtn.textContent = 'Скопировать отмеченное'; }, 2500);
+        });
       } else {
         var ta = document.createElement('textarea');
         ta.value = message;
