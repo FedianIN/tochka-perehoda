@@ -37,7 +37,7 @@
 1. Сохраните фото в `assets/` в формате WebP (качество 80) и JPG как запасной:
    - главное фото первого экрана: `portrait.webp` и `portrait.jpg`, 1200×1500 px, лучше на тёмном или нейтральном фоне;
    - небольшой портрет для блока «Кто ведёт сессии»: `coach.webp` и `coach.jpg`, 800×1000 px.
-2. **Фото 1.** Внутри блока `<div class="hero__visual" ...>` удалите весь тег `<svg>...</svg>`, а на его место вставьте код ниже. Две плавающие карточки `<span class="float ...">` оставьте. У самого блока замените `aria-label="Место для портрета Игоря"` на `aria-label="Игорь, коуч ICF"`.
+2. **Фото 1.** Внутри блока `<div class="hero__visual" ...>` удалите весь тег `<svg>...</svg>`, а на его место вставьте код ниже. Две плавающие карточки `<span class="float ...">` оставьте. У самого блока замените `aria-label="Место для портрета Игоря"` на `aria-label="Игорь, коуч"`.
 
 ```html
 <picture>
@@ -52,7 +52,7 @@
 <picture>
   <source srcset="assets/coach.webp" type="image/webp">
   <img class="photo" src="assets/coach.jpg" width="800" height="1000"
-       alt="Игорь, коуч ICF" loading="lazy" decoding="async">
+       alt="Игорь, коуч" loading="lazy" decoding="async">
 </picture>
 ```
 

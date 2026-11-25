@@ -224,7 +224,6 @@
   /* Готовое сообщение для каждой кнопки записи: Игорь сразу видит, что выбрано */
   var tgMessages = {
     trial: 'Привет, Игорь. Хочу записаться на пробную сессию (50 минут).',
-    single: 'Привет, Игорь. Хочу записаться на разовую сессию (60 минут).',
     pack: 'Привет, Игорь. Хочу записаться на «Перезагрузку» (5 сессий).',
     program: 'Привет, Игорь. Хочу записаться в программу Breaking Changes (8 сессий).'
   };
@@ -233,12 +232,6 @@
     if (msg) a.setAttribute('href', TG + '?text=' + encodeURIComponent(msg));
   });
 
-  var topics = {
-    soft: 'soft skills, которые AI сделал важными',
-    lead: 'управление агентами и людьми',
-    role: 'новый вид специалиста',
-    self: 'не потерять себя'
-  };
 
   function checked() {
     return Array.prototype.slice.call(form.querySelectorAll('input:checked'));
@@ -257,16 +250,14 @@
         if (tgBtn) tgBtn.setAttribute('href', TG + '?text=' + encodeURIComponent(tgMessages.trial));
         return;
       }
-      var count = {};
-      items.forEach(function (i) { count[i.dataset.topic] = (count[i.dataset.topic] || 0) + 1; });
-      var top = Object.keys(count).sort(function (a, b) { return count[b] - count[a]; })[0];
-      text.textContent = 'Отмечено: ' + items.length + '. Ближе всего опора «' + topics[top] +
-        '». Этого достаточно, чтобы начать разговор: кнопка «Записаться» откроет Telegram с отмеченным уже в сообщении.';
+      var first = items[0].nextElementSibling.textContent;
+      text.textContent = 'Отмечено: ' + items.length + '. Например: «' + first +
+        '» Этого достаточно, чтобы начать разговор: кнопка «Записаться на пробную сессию» откроет Telegram, и отмеченное уже будет в сообщении.';
       if (tgBtn) {
         var url = tgBase + '?text=' + encodeURIComponent(buildMessage());
-        /* Слишком длинное сообщение режем до названия опоры: полный текст остаётся в «Скопировать» */
+        /* Слишком длинное сообщение сокращаем до числа пунктов: полный текст остаётся в «Скопировать» */
         if (url.length > MAX_URL) {
-          url = tgBase + '?text=' + encodeURIComponent('Привет, Игорь. Хочу записаться на пробную сессию. Ближе всего опора «' + topics[top] + '».');
+          url = tgBase + '?text=' + encodeURIComponent('Привет, Игорь. Хочу записаться на пробную сессию. Отмечено пунктов: ' + items.length + '.');
         }
         tgBtn.setAttribute('href', url);
       }
