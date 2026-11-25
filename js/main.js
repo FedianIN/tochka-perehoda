@@ -1,6 +1,7 @@
 (function () {
   'use strict';
 
+  window.__mainOk = true; /* см. запасной показ блоков в <head> */
   var cfg = window.SITE_CONFIG || {};
   var CONSENT_KEY = 'tp_consent';
 
