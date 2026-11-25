@@ -62,7 +62,7 @@
   --sand-hover: #e0583a;
   --sand-tint: #eef0f1;
   --accent-soft: #f0866a;  /* акцент для текста на тёмном */
-  --accent-ink: #b8401f;   /* акцент для текста на светлом (контраст AA) */
+  --accent-ink: #ae3c1c;   /* акцент для текста на светлом (контраст AA, в т.ч. на #e3e8e9) */
   --mint: #c2ccce;
   --on-accent: #ffffff;
   --wrap: 1160px;
@@ -89,6 +89,8 @@ p { margin: 0 0 16px; text-wrap: pretty; }
 ul, ol { margin: 0; padding: 0; list-style: none; }
 b, strong { font-weight: 600; }
 ::selection { background: var(--brand); color: #fff; }
+html { scrollbar-color: #8c9095 var(--bg); }
+input, textarea { caret-color: var(--accent-ink); accent-color: var(--accent-ink); }
 button, input, select, textarea { font: inherit; }
 
 /* ---------- Текстовые стили ---------- */
@@ -223,7 +225,7 @@ html:not(.js) .nav a:not(.btn) { font-size: 14px; line-height: 20px; padding: 8p
 /* linear здесь нужен намеренно: строка должна идти с постоянной скоростью */
 .marquee__track { display: flex; width: max-content; animation: marquee 44s linear infinite; }
 .marquee span { font-size: 18px; line-height: 28px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; white-space: nowrap; padding-right: 24px; } /* Title 2 */
-.marquee span::after { content: "\2726"; margin-left: 24px; color: var(--accent-soft); }
+.marquee span::after { content: ""; display: inline-block; width: 8px; height: 8px; margin-left: 24px; border-radius: 2px; background: var(--accent-soft); vertical-align: middle; }
 @keyframes marquee { to { transform: translateX(-50%); } }
 
 /* ---------- Цифры ---------- */
@@ -255,8 +257,9 @@ html:not(.js) .nav a:not(.btn) { font-size: 14px; line-height: 20px; padding: 8p
 .why .card { counter-increment: cell; display: flex; flex-direction: column; justify-content: space-between; gap: 16px; min-height: 240px; padding: 24px; border: 0; border-radius: 0; background: var(--deep); }
 .why .card:nth-child(even) { background: #2c3036; }
 .why .card::before { content: "0" counter(cell); width: auto; height: auto; margin: 0; background: none; font-size: 11px; line-height: 16px; font-weight: 600; letter-spacing: .12em; color: var(--mint); }
-.why .card::after { content: "\2198"; order: 3; display: grid; place-content: center; width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--accent-soft); color: var(--accent-soft); }
-.why .card:nth-child(even)::after { content: "\2197"; background: var(--accent-soft); color: var(--deep); }
+/* Круглая иконка со стрелкой: нарисованный SVG, а не символ шрифта */
+.why .card::after { content: ""; order: 3; width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--accent-soft); background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36' fill='none' stroke='%23f0866a' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 12l12 12M24 15v9h-9'/%3E%3C/svg%3E") center / 100% no-repeat; }
+.why .card:nth-child(even)::after { background: var(--accent-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36' fill='none' stroke='%23202327' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 24l12-12M15 12h9v9'/%3E%3C/svg%3E") center / 100% no-repeat; }
 .why .card:hover { border: 0; }
 .why .card h3 { margin: 0 0 12px; color: #fff; font-size: 21px; line-height: 28px; text-transform: none; letter-spacing: 0; }
 .why .card p { color: #c2ccce; }
@@ -339,7 +342,7 @@ html:not(.js) .nav a:not(.btn) { font-size: 14px; line-height: 20px; padding: 8p
 /* Форматы: тёмная таблица с тонкими линиями между ячейками */
 #formats .prices { gap: 1px; background: var(--deep-2); border: 1px solid var(--deep-2); border-radius: var(--r-2xl); overflow: hidden; }
 #formats .price { border: 0; border-radius: 0; background: var(--deep); padding: 28px; }
-#formats .price--main { background: var(--deep-2); }
+#formats .price--main { background: #2c3036; box-shadow: inset 0 0 0 1px var(--accent-soft); }
 #formats .price h3 { color: #fff; font-size: 22px; line-height: 28px; }
 #formats .price__for { color: var(--accent-soft); }
 #formats .price__sum { color: #fff; }
