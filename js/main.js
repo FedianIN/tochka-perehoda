@@ -75,6 +75,23 @@
     reveals.forEach(function (el) { el.classList.add('is-in'); });
   }
 
+  /* ---------- Закреплённая кнопка записи: после первого экрана, скрыта у финального призыва и подвала ---------- */
+  var sticky = document.getElementById('stickyCta');
+  if (sticky && 'IntersectionObserver' in window) {
+    var seen = { hero: true, contact: false, footer: false };
+    function syncSticky() {
+      sticky.classList.toggle('is-on', !seen.hero && !seen.contact && !seen.footer);
+    }
+    var stickyIo = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) { seen[entry.target.dataset.stickyWatch] = entry.isIntersecting; });
+      syncSticky();
+    });
+    [['.hero', 'hero'], ['#contact', 'contact'], ['.footer', 'footer']].forEach(function (pair) {
+      var el = document.querySelector(pair[0]);
+      if (el) { el.dataset.stickyWatch = pair[1]; stickyIo.observe(el); }
+    });
+  }
+
   /* ---------- Текущий раздел в меню ---------- */
   if (nav && 'IntersectionObserver' in window) {
     var navLinks = {};
