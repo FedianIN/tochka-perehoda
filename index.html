@@ -361,28 +361,14 @@
       </div>
 
       <!-- ФОТО 1 (главное). Как заменить иллюстрацию на снимок — см. README.md -->
-      <div class="hero__visual" data-speed="0.85" role="img" aria-label="Иллюстрация: развилка и путь на уровень выше">
-        <svg viewBox="0 0 480 520" fill="none">
-          <defs>
-            <linearGradient id="gp" x1="240" y1="300" x2="400" y2="40" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#cc4c28"/><stop offset="1" stop-color="#f0866a"/>
-            </linearGradient>
-            <radialGradient id="gd" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(240 300) scale(130)">
-              <stop stop-color="#cc4c28" stop-opacity=".5"/><stop offset="1" stop-color="#cc4c28" stop-opacity="0"/>
-            </radialGradient>
-          </defs>
-          <circle cx="240" cy="300" r="130" fill="url(#gd)"/>
-          <path class="p-dim" d="M40 500 C 110 470, 110 360, 240 300"/>
-          <path class="p-dim p-branch" d="M240 300 C 170 240, 110 200, 70 110"/>
-          <path class="p-dim p-branch" d="M240 300 C 330 290, 400 300, 450 250"/>
-          <path class="p-main" d="M240 300 C 290 220, 330 150, 392 52" stroke="url(#gp)"/>
-          <path d="M366 60 L394 48 L398 79" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle class="ring" cx="240" cy="300" r="26"/>
-          <circle class="ring ring--2" cx="240" cy="300" r="26"/>
-          <circle cx="240" cy="300" r="13" fill="#c2ccce"/>
-        </svg>
-        <span class="float float--a"><b>Квалификация</b>сохранена и пересобрана</span>
-        <span class="float float--b"><b>Уровень выше</b>роль, а не только скорость</span>
+      <div class="hero__visual hero__visual--session" data-speed="0.85">
+        <p class="session__label">Вопросы, с которых начинается сессия</p>
+        <ol class="session__list">
+          <li>Что в твоей работе агент сделать не может?</li>
+          <li>За что ты отвечаешь теперь, а за что раньше?</li>
+          <li>Какой один шаг ты сделаешь на этой неделе?</li>
+        </ol>
+        <p class="session__foot">50 минут · один разобранный случай</p>
       </div>
     </div>
   </section>
@@ -390,8 +376,8 @@
   <!-- 2. Бегущая строка с мыслями -->
   <div class="marquee" aria-hidden="true">
     <div class="marquee__track">
-      <span>«С AI это же на день, да?»</span><span>Где теперь моя ценность?</span><span>Агенты пишут, я проверяю</span><span>Как вести команду, где у всех агенты?</span><span>Учусь по вечерам и всё равно отстаю</span><span>Работа перестала радовать</span>
-      <span>«С AI это же на день, да?»</span><span>Где теперь моя ценность?</span><span>Агенты пишут, я проверяю</span><span>Как вести команду, где у всех агенты?</span><span>Учусь по вечерам и всё равно отстаю</span><span>Работа перестала радовать</span>
+      <span>Soft skills, которые AI сделал важными</span><span>Управление агентами и людьми</span><span>Новый вид специалиста</span><span>Не потерять себя</span><span>Breaking Changes</span>
+      <span>Soft skills, которые AI сделал важными</span><span>Управление агентами и людьми</span><span>Новый вид специалиста</span><span>Не потерять себя</span><span>Breaking Changes</span>
     </div>
   </div>
 
@@ -419,8 +405,32 @@
     </div>
   </section>
 
+  <!-- 6. Самопроверка -->
+  <section class="section section--tint" id="check">
+    <div class="container narrow">
+      <p class="eyebrow">Две минуты для себя</p>
+      <h2>Какая мысль <em>твоя?</em></h2>
+      <p class="section__lead">Отметь то, что звучит знакомо. Данные никуда не отправляются: это способ назвать запрос своими словами.</p>
+      <form class="check" id="check-form" aria-label="Ситуации, с которыми приходят digital-специалисты">
+        <label class="chip"><input type="checkbox" data-topic="soft"><span>У меня просят пересчитать оценку «с AI», а время на проверку и согласование никто не считает.</span></label>
+        <label class="chip"><input type="checkbox" data-topic="role"><span>Ревью кода агента занимает больше времени, чем написать самому, и этого никто не видит.</span></label>
+        <label class="chip"><input type="checkbox" data-topic="self"><span>Открываю чат с агентом раньше, чем успеваю подумать сам.</span></label>
+        <label class="chip"><input type="checkbox" data-topic="lead"><span>Скорость выросла, сроки сжались, а ответственность за результат осталась на мне.</span></label>
+        <label class="chip"><input type="checkbox" data-topic="lead"><span>Команда работает с агентами, а я не понимаю, как теперь оценивать и вести людей.</span></label>
+        <label class="chip"><input type="checkbox" data-topic="self"><span>Раньше я создавал, теперь согласую — и работа перестала радовать.</span></label>
+      </form>
+      <div class="check__result" id="check-result" aria-live="polite" hidden>
+        <p id="check-text"></p>
+        <div class="actions">
+          <button class="btn btn--line" type="button" id="check-copy">Скопировать отмеченное</button>
+          <a class="btn" href="https://t.me/igor_fedianin" target="_blank" rel="noopener" data-goal="tg_check">Записаться на пробную сессию</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- 3а. Кто ведёт сессии -->
-  <section class="section section--tint" id="about">
+  <section class="section" id="about">
     <div class="container coach">
       <div class="coach__text reveal">
         <p class="eyebrow">Кто ведёт сессии</p>
@@ -438,7 +448,7 @@
   </section>
 
   <!-- 5. Четыре опоры программы -->
-  <section class="section" id="topics">
+  <section class="section section--tint" id="topics">
     <div class="container">
       <p class="eyebrow">Программа Breaking Changes</p>
       <h2>Четыре опоры, <em>на&nbsp;которых держится новый уровень</em></h2>
@@ -479,30 +489,6 @@
           <li>Понятно, что делегировать агентам, что людям, что оставить себе.</li>
           <li>Есть план перехода на новый уровень и ритм, в котором остаётся место для жизни.</li>
         </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- 6. Самопроверка -->
-  <section class="section section--tint" id="check">
-    <div class="container narrow">
-      <p class="eyebrow">Две минуты для себя</p>
-      <h2>Какая мысль <em>твоя?</em></h2>
-      <p class="section__lead">Отметь то, что звучит знакомо. Данные никуда не отправляются: это способ назвать запрос своими словами.</p>
-      <form class="check" id="check-form" aria-label="Ситуации, с которыми приходят digital-специалисты">
-        <label class="chip"><input type="checkbox" data-topic="soft"><span>Руководитель видел, как агент собрал приложение за 10 минут, и теперь моя оценка в 5 дней звучит как сопротивление.</span></label>
-        <label class="chip"><input type="checkbox" data-topic="role"><span>Я меньше создаю и больше проверяю — и уже не понимаю, в чём моя ценность.</span></label>
-        <label class="chip"><input type="checkbox" data-topic="self"><span>Весь день ставлю задачи агентам и к вечеру устаю, как после пяти совещаний.</span></label>
-        <label class="chip"><input type="checkbox" data-topic="lead"><span>Скорость выросла, сроки сжались, а ответственность за результат осталась на мне.</span></label>
-        <label class="chip"><input type="checkbox" data-topic="lead"><span>Команда работает с агентами, а я не понимаю, как теперь оценивать и вести людей.</span></label>
-        <label class="chip"><input type="checkbox" data-topic="self"><span>Раньше я создавал, теперь согласую — и работа перестала радовать.</span></label>
-      </form>
-      <div class="check__result" id="check-result" aria-live="polite" hidden>
-        <p id="check-text"></p>
-        <div class="actions">
-          <button class="btn btn--line" type="button" id="check-copy">Скопировать отмеченное</button>
-          <a class="btn" href="https://t.me/igor_fedianin" target="_blank" rel="noopener" data-goal="tg_check">Записаться на пробную сессию</a>
-        </div>
       </div>
     </div>
   </section>
